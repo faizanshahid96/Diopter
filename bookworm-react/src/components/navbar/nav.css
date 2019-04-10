@@ -1,0 +1,37 @@
+.navbar-static-top {
+  min-height: 60px;
+  margin-bottom: 0;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.navbar-nav > li > a {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  line-height: 80px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ee4b28;
+}
+.navbar-default .navbar-nav > li > a {
+  transition: 0.5s color;
+}
+.navbar-brand {
+  margin-top: 14px;
+  margin-bottom: 5px;
+}
+
+.navbar-toggle {
+  margin-top: 22px;
+  margin-bottom: 5px;
+}
+.navbar-default {
+  background-color: #f8f9fc;
+}
+.btn-danger-outline {
+  background-color: #2144af;
+}
