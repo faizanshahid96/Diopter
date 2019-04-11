@@ -88,6 +88,13 @@ class RecipeReviewCard extends React.Component {
                 console.log(res);
             });
 
+        axios.post("/api/postProject/info",{
+           name:this.state.name,
+            description: this.state.description
+        })
+            .catch(error => console.log(error));
+
+
 
     };
 

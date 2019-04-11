@@ -1,17 +1,55 @@
 import express from "express";
 import PostProject from "../models/PostProject";
 import Proposal from "../models/Proposals";
+import PhotographerProfile from "../models/PhotographerProfile"
 const  multer = require('multer');
-const upload = multer({dest : 'upload/'});
+const storage = multer .diskStorage({
+   destination : function (req, file, cb){
+        cb(null,'./upload/');
+   },
+   filename : function (req,file,cb){
+        cb(null, file.originalname);
+   }
+});
 
+
+
+const upload = multer({storage:storage});
 
 const router = express.Router();
 
 
 
 router.post("/upload", upload.single('image'), (req, res) => {
+    const photographer = new PhotographerProfile({
+        profilePicture: req.file.path
+    });
 
-    console.log(req.file);
+    photographer
+        .save()
+        .then(result => {
+            console.log(result);
+            res.status(201).json(result);
+        })
+        .catch(err => console.log(err));
+
+});
+
+
+router.post("/info", (req, res) => {
+    const photographer = new PhotographerProfile({
+        name: req.body.name,
+        description: req.body.description
+    });
+
+    photographer
+        .save()
+        .then(result => {
+            console.log(result);
+            res.status(201).json(result);
+        })
+        .catch(err => console.log(err));
+
 });
 
 
