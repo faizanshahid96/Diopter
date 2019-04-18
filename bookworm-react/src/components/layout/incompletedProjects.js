@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -71,7 +71,6 @@ const styles = theme => ({
 });
 
 
-
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
@@ -83,11 +82,11 @@ class IncompleteProjects extends React.Component {
         dense: false,
         secondary: false,
         openDialogue: false,
-        proposal:'',
-        budget:'',
-        project_id:'',
-        photographer_id:'',
-        client_id:''
+        proposal: '',
+        budget: '',
+        project_id: '',
+        photographer_id: '',
+        client_id: ''
 
     };
 
@@ -95,7 +94,7 @@ class IncompleteProjects extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {data : []} ;
+        this.state = {data: []};
 
     }
 
@@ -106,11 +105,11 @@ class IncompleteProjects extends React.Component {
         // console.log(this.state.data.filter(object => object._id.includes(id)));
 
 
-        this.state.data.filter(object => object._id.includes(id)).map((data, index) =>{
-            this.setState({proposal : data.proposal});
-            this.setState({budget : data.budget});
-            this.setState({photographer_id : data.pUser_id });
-            this.setState({project_id : data.project_id});
+        this.state.data.filter(object => object._id.includes(id)).map((data, index) => {
+            this.setState({proposal: data.proposal});
+            this.setState({budget: data.budget});
+            this.setState({photographer_id: data.pUser_id});
+            this.setState({project_id: data.project_id});
 
             // console.log(this.state.photographer_id);
             return 0;
@@ -120,7 +119,7 @@ class IncompleteProjects extends React.Component {
     };
 
     handleCloseDialogue = () => {
-        this.setState({ openDialogue: false });
+        this.setState({openDialogue: false});
     };
 
     handleChange = panel => (event, expanded) => {
@@ -130,7 +129,7 @@ class IncompleteProjects extends React.Component {
     };
 
     handleClickOpen = (id) => {
-        this.setState({ open: true });
+        this.setState({open: true});
 
         // console.log(id);
 
@@ -138,57 +137,56 @@ class IncompleteProjects extends React.Component {
     };
 
 
-
     recieveData = (id) => {
 
-        const route = '/api/sendProposal/'+id;
+        const route = '/api/sendProposal/' + id;
         // `/api/sendProposal/5ca386873452bc1ebcba5b93`
         axios.get(route)
             .then(res => {
 
 
                 // console.log(res.data);
-                this.setState({data : res.data});
+                this.setState({data: res.data});
             });
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
 
 
     startProject = () => {
 
-        const route = 'api/postProject/'+this.state.project_id;
+        const route = 'api/postProject/' + this.state.project_id;
 
         axios.get(route)
             .then(res => {
 
 
                 // console.log(res.data);
-                this.setState({client_id : res.data});
+                this.setState({client_id: res.data});
 
             });
 
-        axios.post("/api/projects_proposals",{
-            project_id : this.state.project_id,
-            client_id : this.state.client_id,
-            photographer_id : this.state.photographer_id
+        axios.post("/api/projects_proposals", {
+            project_id: this.state.project_id,
+            client_id: this.state.client_id,
+            photographer_id: this.state.photographer_id
         }).then()
             .catch(error => console.log(error));
 
         this.props.receiveData();
 
-        this.setState({ openDialogue: false });
-        this.setState({ open: false });
-
+        this.setState({openDialogue: false});
+        this.setState({open: false});
 
 
     };
 
     render() {
-        const { classes } = this.props;
-        const { dense, secondary } = this.state;
+        const {classes} = this.props;
+        const {dense, secondary} = this.state;
+
         function generate(element) {
             return [0, 1, 2].map(value =>
                 React.cloneElement(element, {
@@ -199,10 +197,10 @@ class IncompleteProjects extends React.Component {
 
         return (
             <div>
-                <br />
-                <br />
-                <br />
-                <br />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={16}>
@@ -222,14 +220,14 @@ class IncompleteProjects extends React.Component {
 
                                     <div className="ui basic green button">View</div>
                                     {/*<Button*/}
-                                        {/*variant="outlined"*/}
-                                        {/*color="primary"*/}
-                                        {/*id={this.props.data._id}*/}
-                                        {/*onClick={this.handleClickOpen.bind(this, this.props.data._id)}*/}
-                                        {/*style={{ marginTop: 7 }}*/}
+                                    {/*variant="outlined"*/}
+                                    {/*color="primary"*/}
+                                    {/*id={this.props.data._id}*/}
+                                    {/*onClick={this.handleClickOpen.bind(this, this.props.data._id)}*/}
+                                    {/*style={{ marginTop: 7 }}*/}
                                     {/*>*/}
 
-                                        {/*View Proposals*/}
+                                    {/*View Proposals*/}
                                     {/*</Button>*/}
                                 </Grid>
                             </Grid>
@@ -237,7 +235,7 @@ class IncompleteProjects extends React.Component {
                     </Paper>
                 </div>
 
-                </div>
+            </div>
             // </div>
         );
     }

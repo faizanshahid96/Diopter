@@ -1,28 +1,27 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import PostProjecte from "../layout/PostProject";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Appbar from '../layout/AppBar'
 
 
-
-
-
-
-const PostProject = ({ email }) => (
+const PostProject = ({email}) => (
     <div>
-        {/*{console.log(email)}*/}
+        <Appbar />
         <PostProjecte data={"email"}/>
     </div>
 );
 
 PostProject.propTypes = {
 
-        email:PropTypes.string.isRequired
-    };
+    email: PropTypes.string.isRequired
+};
 
 function mapStateToProps(state) {
     return {
-            email: state.user.email
+        email: state.user.email
+
+
     }
 }
 

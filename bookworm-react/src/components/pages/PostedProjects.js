@@ -1,21 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import PropTypes, {array} from "prop-types";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import {connect} from "react-redux";
+import {logout} from "../../actions/auth";
 import axios from "axios";
 import LoginForm from "../forms/LoginForm";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import PostProject from "../layout/PostProject";
 import PostedProject from "../layout/PostedProject";
+// import {logout} from "../../actions/auth";
 // import OnGoingProjects from "../layout/OnGoingProjects";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
 
 
-
 class OnGoingProjects extends Component {
-
 
 
     state = {
@@ -24,7 +23,11 @@ class OnGoingProjects extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { isOpen: false, data : [] };
+        this.state = {isOpen: false, data: []};
+
+        // if (!localStorage.isPhotographer){
+        //     this.props.logout();
+        // }
 
     }
 
@@ -36,7 +39,7 @@ class OnGoingProjects extends Component {
 
 
                 // console.log(res.data);
-                this.setState({data : res.data});
+                this.setState({data: res.data});
             });
 
         console.log('hello');
@@ -45,7 +48,7 @@ class OnGoingProjects extends Component {
     componentDidMount() {
 
 
-    this.recieveData();
+        this.recieveData();
 
 
     }
@@ -58,7 +61,7 @@ class OnGoingProjects extends Component {
             <Fragment>
                 {
                     this.state.data.map((data, index) =>
-                        <PostedProject data={data}  recieveData={this.recieveData.bind(this)}  /> //this used to populate my projects key={"PP" + index}
+                        <PostedProject data={data} recieveData={this.recieveData.bind(this)}/> //this used to populate my projects key={"PP" + index}
                     )
                 }
 
@@ -69,10 +72,14 @@ class OnGoingProjects extends Component {
 }
 
 OnGoingProjects.propTypes = {
+    logout: PropTypes.func.isRequired
 
 };
 
-export default OnGoingProjects;
+export default connect(
+    null,
+    {logout}
+)(OnGoingProjects);
 
 
 

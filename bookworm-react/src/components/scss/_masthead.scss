@@ -5,16 +5,20 @@ header.masthead {
   background-image: url('../img/header.jpg');
   background-position: center center;
   @include background-cover;
+
   hr {
     margin-top: 30px;
     margin-bottom: 30px;
   }
+
   h1 {
     font-size: 2rem;
   }
+
   p {
     font-weight: 300;
   }
+
   @media (min-width: 768px) {
     p {
       font-size: 1.15rem;

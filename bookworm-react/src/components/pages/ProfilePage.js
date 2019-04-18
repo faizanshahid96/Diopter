@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import PropTypes, {array} from "prop-types";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import {connect} from "react-redux";
+import {login} from "../../actions/auth";
 import axios from "axios";
 import LoginForm from "../forms/LoginForm";
 import Header from "../layout/Header";
@@ -15,21 +15,17 @@ import ProfilePicture from "../layout/ProfilePicture"
 import AppBar from "../layout/AppBar"
 
 
-
-
 class ProfilePage extends Component {
 
 
-
-    state = {
-
-    };
+    state = {};
 
 
+    // componentDidMount() {
+    //     this.props.history.push("/postproject");
+    // }
 
     render() {
-
-
 
 
         return (
@@ -45,6 +41,9 @@ class ProfilePage extends Component {
 }
 
 ProfilePage.propTypes = {
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
 
 };
 

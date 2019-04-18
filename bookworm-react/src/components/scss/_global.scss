@@ -22,6 +22,7 @@ hr.light {
 a {
   color: $primary;
   @include transition-all;
+
   &:hover {
     color: darken($primary, .1);
   }

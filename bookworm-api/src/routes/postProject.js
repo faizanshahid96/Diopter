@@ -3,6 +3,7 @@ import PostProject from "../models/PostProject";
 import Proposal from "../models/Proposals";
 import PhotographerProfile from "../models/PhotographerProfile"
 const  multer = require('multer');
+
 const storage = multer .diskStorage({
    destination : function (req, file, cb){
         cb(null,'./upload/');
@@ -20,37 +21,22 @@ const router = express.Router();
 
 
 
-router.post("/upload", upload.single('image'), (req, res) => {
-    const photographer = new PhotographerProfile({
-        profilePicture: req.file.path
-    });
 
-    photographer
-        .save()
-        .then(result => {
-            console.log(result);
-            res.status(201).json(result);
-        })
-        .catch(err => console.log(err));
-
-});
-
-
-router.post("/info", (req, res) => {
-    const photographer = new PhotographerProfile({
-        name: req.body.name,
-        description: req.body.description
-    });
-
-    photographer
-        .save()
-        .then(result => {
-            console.log(result);
-            res.status(201).json(result);
-        })
-        .catch(err => console.log(err));
-
-});
+// router.post("/info", (req, res) => {
+//     const photographer = new PhotographerProfile({
+//         name: req.body.name,
+//         description: req.body.description
+//     });
+//
+//     photographer
+//         .save()
+//         .then(result => {
+//             console.log(result);
+//             res.status(201).json(result);
+//         })
+//         .catch(err => console.log(err));
+//
+// });
 
 
 
@@ -120,17 +106,19 @@ router.get("/",(req,res,next) => {
 });
 
 
-router.get("/email",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
+router.get("/email/:id",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
 
+    const email = req.params.id;
+    console.log(email);
     PostProject.find ({
         $and : [
-            {email:'shahreyar166@gmail.com'},
+            {email:email},
             {state:false}
         ]
     }, {photographer_id: 0})
         .exec()
         .then(doc => {
-            console.log(doc);
+            // console.log(doc);
             res.status(200).json(doc)
         })
         .catch(err => console.log('err'));

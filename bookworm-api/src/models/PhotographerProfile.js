@@ -12,7 +12,16 @@ const schema = new mongoose.Schema(
         },
         description: {
             type: String,
+        },
+        expert: {
+            type: String,
+        },
+        location: {
+            type: String,
+        },
 
+        user_id: {
+            type: String,
         },
 
     },

@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import {Link} from "react-router-dom";
+import {logout} from "../../actions/auth";
 import MenuIcon from '@material-ui/icons/Menu';
-// import Drawer from "../layout/Profile_Drawer"
-// import List from "./Profile_Drawer";
-
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import {connect} from "react-redux";
+import Divider from '@material-ui/core/Divider';
+
 
 const styles = {
     root: {
         flexGrow: 1,
+
     },
     grow: {
         flexGrow: 1,
@@ -38,8 +36,6 @@ const styles = {
         width: 'auto',
     },
 };
-
-
 
 
 class ButtonAppBar extends React.Component {
@@ -65,63 +61,72 @@ class ButtonAppBar extends React.Component {
             <div className={classes.fullList}>
                 <List>
 
-                        <ListItem>
-                            <ListItemIcon>
-                                <i className="material-icons">
-                                    account_box
-                                </i>
-                            </ListItemIcon>
-                            <ListItemText primary="My Profile" />
-                        </ListItem>
+                    <Link to="/profile">
+                    <ListItem>
+
+                        <ListItemIcon>
+                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                account_box
+                            </i>
+                        </ListItemIcon>
+                        <ListItemText primary="My Profile"
+
+                        />
+
+                    </ListItem>
+
+                    </Link>
                     {/*<Divider />*/}
+
+
+
+                    <Link to="/onGoingProjects">
 
                     <ListItem>
                         <ListItemIcon>
-                            <i className="material-icons">
+                            <i className="material-icons"  style={{ color: '#FF5722' }}>
                                 ballot
                             </i>
                         </ListItemIcon>
-                        <ListItemText primary="My Projects" />
+                        <ListItemText primary="My Projects"/>
                     </ListItem>
-
+                    </Link>
                     {/*<Divider />*/}
 
+                    <Link to="/incompleteProjects">
                     <ListItem>
                         <ListItemIcon>
-                            <i className="material-icons">
+                            <i className="material-icons"  style={{ color: '#FF5722' }}>
                                 navigate_next
                             </i>
                         </ListItemIcon>
-                        <ListItemText primary="On Going Projects" />
+                        <ListItemText primary="On Going Projects"/>
                     </ListItem>
 
+                    </Link>
 
 
-                    <ListItem>
+                    <ListItem onClick={() => this.props.logout()}>
                         <ListItemIcon>
-                            <i className="material-icons">
+                            <i className="material-icons"  style={{ color: '#FF5722' }}>
                                 exit_to_app
                             </i>
                         </ListItemIcon>
-                        <ListItemText primary="Logout" />
+                        <ListItemText   primary="Logout"/>
                     </ListItem>
 
                 </List>
-
 
 
             </div>
         );
 
 
-
         return (
 
 
-
-
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar position="static" style={{ background: '#FF5722' }}>
                     <Toolbar>
 
                         <Typography variant="h6" color="inherit" className={classes.grow}>
@@ -131,50 +136,42 @@ class ButtonAppBar extends React.Component {
                         {/*<Button color="inherit">*/}
 
 
-
-                            {/*My Profile</Button>*/}
+                        {/*My Profile</Button>*/}
                         {/*<Button color="inherit">*/}
 
 
-
-                            {/*My Projects</Button>*/}
+                        {/*My Projects</Button>*/}
                         {/*<Button color="inherit">*/}
 
 
-
-                            {/*On Going Projects</Button>*/}
+                        {/*On Going Projects</Button>*/}
                         {/*<Button color="inherit">*/}
 
 
-
-                            {/*Logout</Button>*/}
+                        {/*Logout</Button>*/}
 
                         <Button onClick={this.toggleDrawer('top', true)}>
 
-                        <MenuIcon/>
+                            <MenuIcon/>
 
                         </Button>
-
-
 
 
                     </Toolbar>
                 </AppBar>
 
-                     <Drawer anchor="top" open={this.state.top} onClose={this.toggleDrawer('top', false)}>
-                         <div
-                             tabIndex={0}
-                             role="button"
-                             onClick={this.toggleDrawer('top', false)}
-                             onKeyDown={this.toggleDrawer('top', false)}
-                         >
-                             {fullList}
-                         </div>
-                     </Drawer>
+                <Drawer anchor="top" open={this.state.top} onClose={this.toggleDrawer('top', false)}>
+                    <div
+                        tabIndex={0}
+                        role="button"
+                        onClick={this.toggleDrawer('top', false)}
+                        onKeyDown={this.toggleDrawer('top', false)}
+                    >
+                        {fullList}
+                    </div>
+                </Drawer>
 
             </div>
-
-
 
 
         );
@@ -183,6 +180,8 @@ class ButtonAppBar extends React.Component {
 
 ButtonAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(ButtonAppBar)
+export default connect(null, {logout})(withStyles(styles)(ButtonAppBar));
+// export default withStyles(styles)(ButtonAppBar)

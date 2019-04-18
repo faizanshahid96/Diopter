@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import PropTypes, {array} from "prop-types";
-import { connect } from "react-redux";
-import { login } from "../../actions/auth";
+import {connect} from "react-redux";
+import {login} from "../../actions/auth";
 import axios from "axios";
 import LoginForm from "../forms/LoginForm";
 import Header from "../layout/Header";
@@ -19,7 +19,6 @@ import Profile from "../layout/ProfilePicture"
 class incompleteProjects extends Component {
 
 
-
     state = {
         projectsRecieved: []
     };
@@ -27,23 +26,23 @@ class incompleteProjects extends Component {
     constructor(props) {
         super(props);
         let array = [];
-        this.state = { isOpen: false, data : [] };
+        this.state = {isOpen: false, data: []};
         this.State = {
             testing: []
         }
     }
 
 
-    receiveData = () =>{
+    receiveData = () => {
 
 
         const user_id = 'shahreyar166@gmail.com';
-        axios.get(`/api/projects_proposals/`+user_id)
+        axios.get(`/api/projects_proposals/` + user_id)
             .then(res => {
 
 
                 // console.log(res.data);
-                this.setState({data : res.data});
+                this.setState({data: res.data});
             });
 
     };
@@ -66,9 +65,9 @@ class incompleteProjects extends Component {
 
                 <AppBar/>
 
-                <Profile/>
+                {/*<Profile/>*/}
 
-                <Drawer/>
+                {/*<Drawer/>*/}
 
                 {
                     this.state.data.map((data, index) =>
@@ -85,9 +84,7 @@ class incompleteProjects extends Component {
     }
 }
 
-incompleteProjects.propTypes = {
-
-};
+incompleteProjects.propTypes = {};
 
 export default incompleteProjects;
 

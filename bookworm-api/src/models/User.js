@@ -12,7 +12,8 @@ const schema = new mongoose.Schema(
       unique: true
     },
     password: { type: String, required: true },
-    confirmed: { type: Boolean, default: false }
+    confirmed: { type: Boolean },
+    isPhotographer: {type: Boolean , default : false}
   },
 
   { timestamps: true }
@@ -24,6 +25,10 @@ schema.methods.isValidPassword = function isValidPassword(password) {
 
 schema.methods.setPassword = function setPassword(password) {
   this.password = password;
+};
+
+schema.methods.phographer = function phographer(check) {
+    this.isPhotographer = check;
 };
 
 schema.methods.generateJWT = function generateJWT() {
@@ -38,7 +43,7 @@ schema.methods.generateJWT = function generateJWT() {
 schema.methods.toAuthJSON = function toAuthJSON() {
   return {
     email: this.email,
-    confirmed: this.confirmed,
+    isPhotographer: this.isPhotographer,
     token: this.generateJWT()
   };
 };
