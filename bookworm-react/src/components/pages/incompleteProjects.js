@@ -16,6 +16,10 @@ import AppBar from "../layout/AppBar"
 import Drawer from "../layout/Profile_Drawer"
 import Profile from "../layout/ProfilePicture"
 
+
+// this page shows the projects that are not submitted this is the client's side
+
+
 class incompleteProjects extends Component {
 
 
@@ -36,7 +40,7 @@ class incompleteProjects extends Component {
     receiveData = () => {
 
 
-        const user_id = 'shahreyar166@gmail.com';
+        const user_id = localStorage.email;
         axios.get(`/api/projects_proposals/` + user_id)
             .then(res => {
 

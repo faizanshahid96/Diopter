@@ -16,8 +16,8 @@ const app = express();
 app.use(bodyParser.json());
 mangoose.Promise = Promise;
 mangoose.connect(
-  "mongodb://localhost/photography", //change this (solution in tutorial no.3 time:18:00)
-  { useMongoClient: true }
+    "mongodb://localhost/photography", //change this (solution in tutorial no.3 time:18:00)
+    { useMongoClient: true }
 );
 
 app.use(express.static('upload'));

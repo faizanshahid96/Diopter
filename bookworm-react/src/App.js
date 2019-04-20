@@ -14,6 +14,8 @@ import IncompleteProjects from "./components/pages/incompleteProjects";
 import Profile from "./components/pages/ProfilePage";
 import CheckPhotographer from "./components/pages/checkPhotographer";
 import i from "./components/pages/I";
+import PhotographerOnGoingProjects from './components/pages/photographerOnGoingProjects';
+import PincompleteProjects from './components/pages/pIncompleteProjects'
 
 const App = ({location}) => (
     <div>
@@ -43,6 +45,10 @@ const App = ({location}) => (
         <UserRoute location={location} path="/incompleteProjects" exact component={IncompleteProjects}/>
         <UserRoute location={location} path="/profile" exact component={Profile}/>
         <UserRoute location={location} path="/postproject" exact component={PostProject}/>
+        <UserRoute location={location} path="/pOngoingProjects" exact component={PhotographerOnGoingProjects}/>
+        <UserRoute location={location} path="/pIncompleteProjects" exact component={PincompleteProjects}/>
+
+
 
 
     </div>

@@ -38,7 +38,20 @@ const schema = new mongoose.Schema(
             required: true,
 
         },
-        photographer_id : { type : Array , "default" : [] }
+        photographer_id : { type : Array , "default" : [] },
+        date: {
+            type: String,
+
+        },
+        time: {
+            type: String
+        },
+        final_Photographer:{
+            type: String
+        },
+        uploadedProject:{
+            type: String
+        }
 
 
     },

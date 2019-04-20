@@ -1,6 +1,7 @@
 import express from "express";
 import Projects_Proposal from "../models/Project_Proposal";
 import PostProject from "../models/PostProject";
+import PhotographerProfile from "../models/PhotographerProfile";
 
 
 const router = express.Router();
@@ -9,12 +10,26 @@ router.post("/", (req, res) => {
 
     const project_id= req.body.project_id;
 
+    console.log(req.body.photographer_id);
+
     const projectProposal = new Projects_Proposal({
 
         project_id: req.body.project_id,
-        pUser_id: req.body.photographer_id,
-        photographer_id: req.body.client_id,
+        photographer_id: req.body.photographer_id,
+        pUser_id: req.body.client_id,
     });
+
+
+
+    PostProject.updateOne(
+        { _id: project_id },
+        { $set: { final_Photographer: req.body.photographer_id} }
+    ).exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
 
 
 
@@ -25,7 +40,7 @@ router.post("/", (req, res) => {
     //this is the code to set the state of project to true
     PostProject.updateOne(
         { _id: project_id },
-        { $set: { state: true } }
+        { $set: { state: true, date: req.body.date, time: req.body.time } }
     ).exec()
         .then(doc => {
             console.log(doc);
@@ -70,4 +85,37 @@ router.get("/:user_id",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
 
 
 });
+
+
+router.get("/findF/:user_id",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
+
+    const user_id=req.params.user_id;
+
+    // this code will get all those projects that are on going for the currently logged in user
+
+    // console.log("user_id");
+
+    PostProject.find ({final_Photographer  : user_id})
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log('err'));
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
 export default router;

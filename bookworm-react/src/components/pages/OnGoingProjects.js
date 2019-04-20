@@ -28,6 +28,9 @@ class OnGoingProjects extends Component {
 
                 // console.log(res.data);
                 this.setState({data: res.data});
+
+
+                console.log(res.data.photographer_id);
             });
 
     };

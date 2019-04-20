@@ -25,6 +25,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
+import DatePicker from './DatePicker';
+import TimePicker from './TimePicker';
 
 
 const styles = theme => ({
@@ -86,7 +88,10 @@ class ControlledExpansionPanels extends React.Component {
         budget: '',
         project_id: '',
         photographer_id: '',
-        client_id: ''
+        client_id: '',
+        info_dialogue:'',
+        time:'',
+        date:''
 
     };
 
@@ -97,6 +102,19 @@ class ControlledExpansionPanels extends React.Component {
         this.state = {data: []};
 
     }
+
+
+    setDate=(date)=>{
+        this.setState({date:date});
+        console.log(this.state.date);
+    };
+
+    setTime=(time)=>{
+        this.setState({time:time});
+        console.log(this.state.time);
+    };
+
+
 
     handleClickOpenDialogue = (id) => {
         this.setState({openDialogue: true});
@@ -111,7 +129,7 @@ class ControlledExpansionPanels extends React.Component {
             this.setState({photographer_id: data.pUser_id});
             this.setState({project_id: data.project_id});
 
-            // console.log(this.state.photographer_id);
+            console.log(this.state.photographer_id);
             return 0;
         })
 
@@ -154,9 +172,12 @@ class ControlledExpansionPanels extends React.Component {
         this.setState({open: false});
     };
 
+    closeInfoDialogue = () => {
+        this.setState({info_dialogue: false});
+    };
 
-    startProject = () => {
 
+    projectDone = ()=>{
         const route = 'api/postProject/' + this.state.project_id;
 
         axios.get(route)
@@ -170,12 +191,24 @@ class ControlledExpansionPanels extends React.Component {
 
         axios.post("/api/projects_proposals", {
             project_id: this.state.project_id,
-            client_id: this.state.client_id,
-            photographer_id: this.state.photographer_id
+            client_id: localStorage.email,
+            photographer_id: this.state.photographer_id,
+            date: this.state.date,
+            time: this.state.time
         }).then()
             .catch(error => console.log(error));
 
         this.props.receiveData();
+    };
+
+
+    startProject = () => {
+
+
+
+        this.setState({info_dialogue: true});
+
+
 
         this.setState({openDialogue: false});
         this.setState({open: false});
@@ -292,6 +325,8 @@ class ControlledExpansionPanels extends React.Component {
 
                     </Dialog>
                 </div>
+
+                {/*THE DIALOGUE BOX TO VIEW A SPECIFIC PROPOSAL STARTS FROM HERE*/}
                 <div>
                     <Dialog
                         open={this.state.openDialogue}
@@ -348,6 +383,50 @@ class ControlledExpansionPanels extends React.Component {
                         </DialogActions>
                     </Dialog>
                 </div>
+
+                {/*THIS CODE IS FOR ENTER DETAILS OF THE EVENT AND THEN THE PROJECT STARTS*/}
+
+
+                <div>
+                    <Dialog
+                        open={this.state.info_dialogue}
+                        onClose={this.handleCloseDialogue}
+                        aria-labelledby="form-dialog-title"
+                    >
+                        {/*<DialogTitle id="form-dialog-title"></DialogTitle>*/}
+                        <DialogContent>
+                            <DialogContentText>
+                                Please add following information and get started
+                            </DialogContentText>
+                            <Grid container>
+                                <Grid xs={12}>
+                                    <DatePicker fun={this.setDate.bind(this)} />
+                                </Grid>
+                            </Grid>
+
+                            <br/>
+                            <Grid container>
+                                <Grid item xs={5}>
+                                    <TimePicker fun={this.setTime.bind(this)}/>
+
+                                </Grid>
+                            </Grid>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.closeInfoDialogue} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={this.projectDone} color="primary">
+                                Start Project
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
+
+
+
+
             </div>
         );
     }

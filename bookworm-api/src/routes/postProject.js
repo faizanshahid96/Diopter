@@ -50,7 +50,8 @@ router.post("/", (req, res) => {
         category: req.body.category,
         budget: req.body.budget,
         email: req.body.email,
-        state: false
+        state: false,
+        date:req.body.date
     });
 
 
@@ -94,9 +95,11 @@ router.post("/", (req, res) => {
 
 
 
-router.get("/",(req,res,next) => {
+router.get("/:user_id",(req,res,next) => {
 
-    PostProject.find({ photographer_id:  { $ne : "faizan166@gmail.com"}}).exec()
+    const photographer_id= req.params.user_id;
+
+    PostProject.find({ photographer_id:  { $ne : photographer_id}}).exec()
         .then(doc => {
             // console.log(doc);
             res.status(200).json(doc)
@@ -137,4 +140,67 @@ router.get("/:id",(req,res,next) => {
         .catch(err => console.log(err));
 
 });
+//to get the projects that a photographer sent proposals to
+
+
+
+router.get("/getProject/:id",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
+
+    console.log( req.params.id);
+    PostProject.find ({
+        $and : [
+            {photographer_id : req.params.id},
+            {state:false}
+        ]
+    })
+        .exec()
+        .then(doc => {
+            // console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log('err'));
+
+});
+
+router.get("/hello/:pUser",(req,res,next) => {
+
+    console.log('hello');
+
+    Proposal.find ()
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log('err'));
+});
+
+//this code is used to upload final project to server
+
+router.post("/uploadProject/:user_id", upload.single('image'), (req, res) => {
+
+    const user_id = req.params.user_id;
+
+
+    console.log("hello");
+
+
+    // PhotographerProfile.updateOne(
+    //     { user_id: user_id },
+    //     { $set: { profilePicture : req.file.path } }
+    // ).exec()
+    //     .then(doc => {
+    //         console.log(doc);
+    //         res.status(200).json(doc)
+    //     })
+    //     .catch(err => console.log(err));
+    //
+
+
+
+});
+
+
+
+
 export default router;

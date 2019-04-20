@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+
 
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
@@ -88,11 +90,6 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 2,
     },
 
-    // imageupload :
-    //     {
-    //         display: none
-    //
-    //     }
 });
 
 class RecipeReviewCard extends React.Component {
@@ -308,8 +305,6 @@ class RecipeReviewCard extends React.Component {
 
 
 
-
-                                <br/>
                                 <br/>
 
                                 <Grid container justify = "center">
@@ -505,7 +500,7 @@ class RecipeReviewCard extends React.Component {
 
 
 
-                <ImageGallery data={this.state.gallery1}   />
+                {/*<ImageGallery data={this.state.gallery1}   />*/}
 
 
 

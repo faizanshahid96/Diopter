@@ -130,11 +130,12 @@ class PostedProject extends React.Component {
 
     sendData = () => {
 
+
         axios.post("/api/sendProposal", {
             proposal: this.state.proposal,
             budget: this.state.budget,
             project_id: this.state.id,
-            user_id: 'faizan166@gmail.com',
+            user_id: localStorage.email,
         }).catch(error => console.log(error));
 
 

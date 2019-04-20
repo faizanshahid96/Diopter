@@ -116,7 +116,7 @@ class LoginPage extends Component {
 
                 {/*{*/}
                 {/*this.state.data.map(function(data, index){*/}
-                {/*return <PostedProject data={data}  hello={this.hello.bind(this)}  index={index} key={"PP"+index} />*/}
+                    {/*return <PostedProject data={data}  hello={this.hello.bind(this)}  index={index} key={"PP"+index} />*/}
                 {/*//deleteProject={this.deleteProject.bind(this)}*/}
                 {/*}.bind(this))*/}
                 {/*}*/}

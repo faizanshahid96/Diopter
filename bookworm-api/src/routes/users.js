@@ -2,6 +2,7 @@ import express from "express";
 import User from "../models/User";
 import parseErrors from "../utils/parseErrors";
 import PostProject from "../models/PostProject";
+import SetProfile from "../models/PhotographerProfile";
 
 const router = express.Router();
 
@@ -13,6 +14,20 @@ router.post("/", (req, res) => {
 
   if (check === 'yes'){
       user.phographer(true);
+      const profile= new SetProfile({
+          user_id: email,
+          name : 'Name',
+          description: 'Description',
+          expert : 'category',
+          location: 'Your city',
+      });
+
+
+      profile
+          .save()
+          .then()
+          .catch();
+
   }
   if (check === 'no'){
       user.phographer(false);

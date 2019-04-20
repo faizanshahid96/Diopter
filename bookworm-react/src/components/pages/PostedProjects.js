@@ -34,11 +34,11 @@ class OnGoingProjects extends Component {
 
     recieveData = () => {
 
-        axios.get(`/api/postProject/`)
+        const link = "/api/postProject/"+localStorage.email;
+
+        axios.get(link)
             .then(res => {
 
-
-                // console.log(res.data);
                 this.setState({data: res.data});
             });
 

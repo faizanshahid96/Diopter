@@ -15,6 +15,7 @@ import axios from "axios";
 // import {browserHistory} from 'react-router-dom';
 import {Link, Redirect} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
+import DatePicker from "./DatePicker";
 
 
 const styles = theme => ({
@@ -59,6 +60,7 @@ class PostProject extends React.Component {
         projectName: "",
         category: 0,
         description: '',
+        date :''
 
 
     };
@@ -81,6 +83,13 @@ class PostProject extends React.Component {
         console.log(this.state.email);
         //this.props.deletePorject(index);
     }
+
+
+    setDate=(date)=>{
+        this.setState({date:date});
+        console.log(this.state.date);
+        console.log("hello");
+    };
 
 
     handleChanger = name => event => {
@@ -123,7 +132,8 @@ class PostProject extends React.Component {
             category: this.state.category,
             description: this.state.description,
             budget: this.state.budget,
-            email: this.state.email
+            email: this.state.email,
+            date: this.state.date
         })
             .catch(error => console.log(error));
 
@@ -320,6 +330,15 @@ class PostProject extends React.Component {
                                                 variant="outlined"
                                             />
                                         </Grid>
+
+                                        <Grid container>
+                                            <Grid item xs={4} style={{marginLeft: 70, marginTop: 35}}>
+                                                <DatePicker  fun={this.setDate.bind(this)}/>
+                                            </Grid>
+
+                                        </Grid>
+
+
                                     </Grid>
 
                                     <Grid container justify="center">
