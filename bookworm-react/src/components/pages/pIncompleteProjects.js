@@ -12,20 +12,26 @@ import PostedProject from "../layout/PostedProject";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
 import IncompleteProjects from "../layout/pIncompleteProjects"
-import AppBar from "../layout/AppBar"
+import AppBar from "../layout/PhotographerAppBar"
 import Drawer from "../layout/Profile_Drawer"
 import Profile from "../layout/ProfilePicture"
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
 
 
 
-// this page shows the projects that are not submitted this is the client's side
+// this page shows the projects that are not submitted this is the photographer's side
+
+
 
 
 class pIncompleteProjects extends Component {
 
 
     state = {
-        projectsRecieved: []
+        projectsRecieved: [],
+
     };
 
     constructor(props) {
@@ -33,7 +39,7 @@ class pIncompleteProjects extends Component {
         let array = [];
         this.state = {isOpen: false, data: []};
         this.State = {
-            testing: []
+            testing: [],
         }
     }
 
@@ -58,7 +64,6 @@ class pIncompleteProjects extends Component {
 
         this.receiveData();
 
-
     }
 
 
@@ -71,18 +76,41 @@ class pIncompleteProjects extends Component {
 
                 <AppBar/>
 
-                {/*<Profile/>*/}
 
-                {/*<Drawer/>*/}
+                <Grid container justify="center">
 
-                <h1>hello</h1>
+                    <Grid container justify="center">
+                        <Grid item>
+                            <br/>
+                            <br/>
+
+                            <br/>
+
+                            <Typography component="h1" variant="display1" gutterBottom>
+                                Projects you have to submit
+                            </Typography>
+                            <br/>
+                            <br/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
 
                 {
+
                     this.state.data.map((data, index) =>
 
                         <IncompleteProjects data={data} key={"PP" + index} receiveData={this.receiveData.bind(this)}/>
                     )
+
                 }
+
+
+
+
+
+
+
 
 
                 {/*<IncompleteProjects data={data} key={"PP" + index}/>*/}

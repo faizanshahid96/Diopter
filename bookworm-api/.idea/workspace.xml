@@ -2,24 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86473f11-3ffb-44ca-be50-d6e00895adfd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/upload/images.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/PostProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PostProject.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/postProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/postProject.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/projects_proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/projects_proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookworm-react/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/carousel/Carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/carousel/Carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/forms/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/forms/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/forms/SignupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/forms/SignupForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/AppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/PostProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/PostProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/PostedProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/PostedProject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/ProfilePicture.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/ProfilePicture.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/Proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/I.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/I.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/incompletedProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/incompletedProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/layout/pIncompleteProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/layout/pIncompleteProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/navbar/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/HomePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/OnGoingProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/OnGoingProjects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/PostedProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/PostedProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/Projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/Projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/SignUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/SignUpPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/incompleteProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/incompleteProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/pIncompleteProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/pIncompleteProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bookworm-react/src/components/pages/photographerOnGoingProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bookworm-react/src/components/pages/photographerOnGoingProjects.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/projects_proposals.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="97" column="42" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+            <state relative-caret-position="261">
+              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -50,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
+            <state relative-caret-position="459">
               <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -62,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/setProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="18" />
+            <state relative-caret-position="17">
+              <caret line="3" selection-start-line="3" selection-end-line="18" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -84,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="238">
               <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -93,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/postProject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="187" column="4" lean-forward="true" selection-start-line="187" selection-start-column="7" selection-end-line="197" />
+            <state relative-caret-position="202">
+              <caret line="211" column="8" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="8" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -108,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/PostProject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+            <state relative-caret-position="467">
+              <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -117,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/sendProposal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
+            <state relative-caret-position="544">
               <caret line="35" column="22" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="22" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -138,10 +141,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>setPass</find>
-      <find>and</find>
       <find>g</find>
       <find>update</find>
       <find>upload</find>
+      <find>and</find>
+      <find>getProject</find>
+      <find>POSTPROJECT</find>
+      <find>post</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,14 +168,14 @@
         <option value="$PROJECT_DIR$/src/routes/practice.js" />
         <option value="$PROJECT_DIR$/src/routes/sendProposal.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/routes/projects_proposals.js" />
         <option value="$PROJECT_DIR$/src/models/PostProject.js" />
         <option value="$PROJECT_DIR$/src/routes/postProject.js" />
+        <option value="$PROJECT_DIR$/src/routes/projects_proposals.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="745" />
   </component>
@@ -266,11 +272,12 @@
       <workItem from="1555578101866" duration="14492000" />
       <workItem from="1555753764737" duration="1943000" />
       <workItem from="1555756319978" duration="14034000" />
+      <workItem from="1555829158783" duration="8167000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165474000" />
+    <option name="totallyTimeSpent" value="173641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -285,7 +292,7 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856734" visible="true" weight="0.19122024" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856734" weight="0.27083334" />
       <window_info id="Structure" order="1" sideWeight="0.50143266" side_tool="true" weight="0.24330357" />
       <window_info id="npm" order="2" sideWeight="0.50143266" side_tool="true" weight="0.24330357" />
       <window_info id="Favorites" order="3" sideWeight="0.50143266" side_tool="true" weight="0.24330357" />
@@ -299,7 +306,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.41384864" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.45410627" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -400,10 +407,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/best-compact-cameras-2018.ngsversion.1512502238960.adapt.1900.1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
+        <state relative-caret-position="459">
           <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/setProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="3" selection-start-line="3" selection-end-line="18" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -416,15 +442,9 @@
     <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="238">
           <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
@@ -434,31 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/sendProposal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
+        <state relative-caret-position="544">
           <caret line="35" column="22" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/best-compact-cameras-2018.ngsversion.1512502238960.adapt.1900.1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/projects_proposals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="97" column="42" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/setProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="18" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -467,15 +464,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/PostProject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+        <state relative-caret-position="467">
+          <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/postProject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="187" column="4" lean-forward="true" selection-start-line="187" selection-start-column="7" selection-end-line="197" />
+        <state relative-caret-position="202">
+          <caret line="211" column="8" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/projects_proposals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>

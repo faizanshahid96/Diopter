@@ -51,7 +51,12 @@ const schema = new mongoose.Schema(
         },
         uploadedProject:{
             type: String
-        }
+        },
+        submit: {
+            type: Boolean,
+            required: false,
+
+        },
 
 
     },

@@ -25,6 +25,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 const styles = theme => ({
@@ -86,7 +87,8 @@ class IncompleteProjects extends React.Component {
         budget: '',
         project_id: '',
         photographer_id: '',
-        client_id: ''
+        client_id: '',
+        uploadedProject:''
 
     };
 
@@ -131,9 +133,33 @@ class IncompleteProjects extends React.Component {
     handleClickOpen = (id) => {
         this.setState({open: true});
 
+        const route = '/api/postProject/getSubmission/' + id;
+
+        axios.get(route)
+            .then(res => {
+
+                this.setState({uploadedProject: res.data[0].uploadedProject });
+
+                const opp = "http://localhost:8080/"+this.state.uploadedProject.substring(7, 100);
+
+                this.setState({uploadedProject:opp});
+
+                console.log(this.state.uploadedProject);
+
+            });
+
+
+
+
+
+
+
+
+        // this.setState({project_id: id});
+
         // console.log(id);
 
-        this.recieveData(id);
+        // this.recieveData(id);
     };
 
 
@@ -151,6 +177,7 @@ class IncompleteProjects extends React.Component {
     };
 
     handleClose = () => {
+
         this.setState({open: false});
     };
 
@@ -209,31 +236,77 @@ class IncompleteProjects extends React.Component {
                                     <Grid item xs>
                                         <Typography gutterBottom variant="subtitle1">
 
-                                            {this.props.data.description}
+                                            {this.props.data.projectName}
                                             {/*I am looking for an event photographer for a conference in*/}
                                             {/*Lahore*/}
                                         </Typography>
                                         <Typography gutterBottom>21 days left</Typography>
                                     </Grid>
                                 </Grid>
+
+
                                 <Grid item>
 
-                                    <div className="ui basic green button">View</div>
-                                    {/*<Button*/}
-                                    {/*variant="outlined"*/}
-                                    {/*color="primary"*/}
-                                    {/*id={this.props.data._id}*/}
-                                    {/*onClick={this.handleClickOpen.bind(this, this.props.data._id)}*/}
-                                    {/*style={{ marginTop: 7 }}*/}
-                                    {/*>*/}
+                                    <div className="ui basic green button"
+                                         id={this.props.data._id}
+                                         onClick={this.handleClickOpen.bind(this, this.props.data._id)}
+                                    >
+                                        View
 
-                                    {/*View Proposals*/}
-                                    {/*</Button>*/}
+
+                                    </div>
+
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Paper>
                 </div>
+
+                {/*dialogue box starts from here*/}
+
+                <div>
+                    {/*<Button variant="outlined" color="primary" onClick={this.handleClickOpen}>*/}
+                    {/*Open form dialog*/}
+                    {/*</Button>*/}
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="form-dialog-title"
+                    >
+                        <DialogTitle id="form-dialog-title">You can download the project from here</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                The photographer submitted the project, now you are able to download it from here
+                            </DialogContentText>
+
+                            <Grid container justify = "center">
+
+                                {/*<Link to={this.state.uploadedProject}>*/}
+
+                                    <Button color="primary" style={{ color : "#FF1329" }} href={this.state.uploadedProject}>
+                                    Download
+                                    </Button>
+
+                                {/*</Link>*/}
+
+                            </Grid>
+
+
+
+
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleCloseAndUpdate} color="primary" style={{ color : "#FF1329" }}>
+                                Cancel
+                            </Button>
+                            <Button onClick={this.handleClose} color="primary" style={{ color : "#80D144" }} >
+                                Upload
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
+
 
             </div>
             // </div>

@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 
     PostProject.updateOne(
         { _id: project_id },
-        { $set: { final_Photographer: req.body.photographer_id} }
+        { $set: { final_Photographer: req.body.photographer_id, submit :false} }
     ).exec()
         .then(doc => {
             console.log(doc);
@@ -94,8 +94,14 @@ router.get("/findF/:user_id",(req,res,next) => { //{email:'shahreyar166@gmail.co
     // this code will get all those projects that are on going for the currently logged in user
 
     // console.log("user_id");
+    // ({final_Photographer  : user_id})
 
-    PostProject.find ({final_Photographer  : user_id})
+    PostProject.find({
+        $and : [
+            {final_Photographer:user_id},
+            {submit :false}
+        ]
+    })
         .exec()
         .then(doc => {
             console.log(doc);

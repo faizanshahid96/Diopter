@@ -13,9 +13,14 @@ import ReactDOM from "react-dom";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 // import {browserHistory} from 'react-router-dom';
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import DatePicker from "./DatePicker";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const styles = theme => ({
@@ -60,7 +65,9 @@ class PostProject extends React.Component {
         projectName: "",
         category: 0,
         description: '',
-        date :''
+        date :'',
+        open: false,
+
 
 
     };
@@ -136,11 +143,20 @@ class PostProject extends React.Component {
             date: this.state.date
         })
             .catch(error => console.log(error));
+        this.setState({ open: true });
 
-        // browserHistory.push('/');
 
 
     };
+
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
 
     render() {
         const {classes, theme} = this.props;
@@ -362,6 +378,30 @@ class PostProject extends React.Component {
                     </Grid>
 
                 </Grid>
+
+
+                {/*//DIALOUE STARTS FROM HERE*/}
+
+
+                <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Your project has been posted
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+
+                       <Link to='/onGoingProjects'> <Button onClick={this.handleClose} color="primary" autoFocus>
+                            Okay
+                       </Button></Link>
+                    </DialogActions>
+                </Dialog>
             </Fragment>
         );
     }

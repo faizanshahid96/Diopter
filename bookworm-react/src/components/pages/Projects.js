@@ -11,6 +11,8 @@ import PostedProject from "../layout/PostedProject";
 // import OnGoingProjects from "../layout/OnGoingProjects";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
+import AppBar from "../layout/PhotographerAppBar"
+
 
 
 class Projects extends Component {
@@ -52,6 +54,9 @@ class Projects extends Component {
 
         return (
             <Fragment>
+
+
+                <AppBar/>
                 {
                     this.state.data.map((data, index) =>
 

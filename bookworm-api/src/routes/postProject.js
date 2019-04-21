@@ -177,26 +177,45 @@ router.get("/hello/:pUser",(req,res,next) => {
 
 //this code is used to upload final project to server
 
-router.post("/uploadProject/:user_id", upload.single('image'), (req, res) => {
+router.post("/uploadProject/:project_id", upload.single('image'), (req, res) => {
 
-    const user_id = req.params.user_id;
+    const project_id = req.params.project_id;
 
 
     console.log("hello");
 
 
-    // PhotographerProfile.updateOne(
-    //     { user_id: user_id },
-    //     { $set: { profilePicture : req.file.path } }
-    // ).exec()
-    //     .then(doc => {
-    //         console.log(doc);
-    //         res.status(200).json(doc)
-    //     })
-    //     .catch(err => console.log(err));
-    //
+    PostProject.updateOne(
+        { _id: project_id },
+        { $set: { uploadedProject : req.file.path , submit : true} }
+    ).exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
 
 
+
+
+});
+
+//to get the final project uploaded by photographer
+
+
+
+
+router.get("/getSubmission/:id",(req,res,next) => {
+
+
+    console.log('hello');
+    PostProject.find ({_id:req.params.id})
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
 
 });
 

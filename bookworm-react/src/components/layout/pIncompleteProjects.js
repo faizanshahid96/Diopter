@@ -71,6 +71,9 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2,
         margin: "auto",
         maxWidth: 1000
+    },
+    margin:{
+        marginLeft: 40
     }
 });
 
@@ -188,7 +191,9 @@ class IncompleteProjects extends React.Component {
     //
     // };
 
-    handleClickOpen = () => {
+    handleClickOpen = (id) => {
+        console.log(id);
+        this.setState({project_id: id});
         this.setState({open: true});
     };
 
@@ -215,6 +220,7 @@ class IncompleteProjects extends React.Component {
         }
 
         this.upload();
+        this.props.receiveData();
 
         this.setState({open: false});
         this.setState({pic:true})
@@ -241,7 +247,7 @@ class IncompleteProjects extends React.Component {
 
         fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
 
-        const link = `/api/postProject/uploadProject/`+localStorage.email;
+        const link = `/api/postProject/uploadProject/`+this.state.project_id;
 
         axios.post(link, fd)
             .then(res => {
@@ -276,19 +282,25 @@ class IncompleteProjects extends React.Component {
                         <Grid container spacing={16}>
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={16}>
-                                    <Grid item xs>
-                                        <Typography gutterBottom variant="subtitle1">
+                                    <Grid item xs className={classes.margin}>
+                                        <Typography gutterBottom variant="subheading">
 
                                             {this.props.data.projectName}
                                             {/*I am looking for an event photographer for a conference in*/}
                                             {/*Lahore*/}
                                         </Typography>
-                                        <Typography gutterBottom>21 days left</Typography>
+                                        <Typography variant="caption" gutterBottom>21 days left</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid item>
 
-                                    <div className="ui basic green button" onClick={this.handleClickOpen}>View</div>
+                                    <div
+                                        className="ui basic green button"
+                                        // onClick={this.handleClickOpen}
+                                        id={this.props.data._id}
+                                        onClick={this.handleClickOpen.bind(this, this.props.data._id)}
+
+                                    >Submit</div>
                                     {/*<Button*/}
                                     {/*variant="outlined"*/}
                                     {/*color="primary"*/}
@@ -347,7 +359,7 @@ class IncompleteProjects extends React.Component {
                                 Cancel
                             </Button>
                             <Button onClick={this.handleClose} color="primary" style={{ color : "#80D144" }} >
-                                Save
+                                Upload
                             </Button>
                         </DialogActions>
                     </Dialog>

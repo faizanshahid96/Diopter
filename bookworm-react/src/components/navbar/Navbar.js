@@ -12,48 +12,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            // <nav class="navbar navbar-light fixed-top" id="mainNav">
-            //   <div class="container">
-            //     <a class="navbar-brand" href="#page-top">
-            //       Photography
-            //     </a>
-            //     <button
-            //       class="navbar-toggler navbar-toggler-right"
-            //       type="button"
-            //       data-toggle="collapse"
-            //       data-target="#navbarResponsive"
-            //       aria-controls="navbarResponsive"
-            //       aria-expanded="false"
-            //       aria-label="Toggle navigation"
-            //     >
-            //       <span class="navbar-toggler-icon" />
-            //     </button>
-            //     <div class="collapse navbar-collapse" id="navbarResponsive">
-            //       <ul class="navbar-nav ml-auto">
-            //         <li class="nav-item">
-            //           <a class="nav-link js-scroll-trigger" href="#about">
-            //             About
-            //           </a>
-            //         </li>
-            //         <li class="nav-item">
-            //           <a class="nav-link js-scroll-trigger" href="#services">
-            //             Services
-            //           </a>
-            //         </li>
-            //         <li class="nav-item">
-            //           <a class="nav-link js-scroll-trigger" href="#portfolio">
-            //             Portfolio
-            //           </a>
-            //         </li>
-            //         <li class="nav-item">
-            //           <a class="nav-link js-scroll-trigger" href="#contact">
-            //             Contact
-            //           </a>
-            //         </li>
-            //       </ul>
-            //     </div>
-            //   </div>
-            // </nav>
+
 
             <nav class="navbar navbar-default">
                 <div class="container">
@@ -69,19 +28,16 @@ class Navbar extends Component {
                             <span class="icon-bar"/>
                         </button>
                         <a class="navbar-brand" href="#">
-                            photography
+                            Diopter
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#">ABOUT US</a>
+                                <Link to='/signup'> <a style={{color: "#5E5E5E"}}>SIGN UP</a></Link>
                             </li>
                             <li>
-                                <a href="#">SIGN UP</a>
-                            </li>
-                            <li>
-                                <a href="#">LOGIN</a>
+                                <Link to='/login'>  <a style={{color: "#5E5E5E"}}>LOGIN</a></Link>
                             </li>
                         </ul>
                     </div>

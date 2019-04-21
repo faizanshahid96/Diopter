@@ -239,12 +239,12 @@ class ControlledExpansionPanels extends React.Component {
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={16}>
                                     <Grid item xs>
-                                        <Typography gutterBottom variant="subtitle1">
+                                        <Typography gutterBottom variant="subheading">
 
                                             {this.props.data.projectName}
 
                                         </Typography>
-                                        <Typography gutterBottom>17 Proposals</Typography>
+                                        <Typography  variant="caption"  gutterBottom>Project Date: {this.props.data.date}</Typography>
                                     </Grid>
                                 </Grid>
                                 <Grid item>
@@ -253,7 +253,7 @@ class ControlledExpansionPanels extends React.Component {
                                         color="primary"
                                         id={this.props.data._id}
                                         onClick={this.handleClickOpen.bind(this, this.props.data._id)}
-                                        style={{marginTop: 7}}
+                                        style={{marginTop: 7, color : "#FF5722", borderColor: "#E8E8E8"}}
                                     >
 
                                         View Proposals

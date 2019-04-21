@@ -61,47 +61,47 @@ class ButtonAppBar extends React.Component {
             <div className={classes.fullList}>
                 <List>
 
-                    <Link to="/postproject">
-                    <ListItem>
+                    <Link to="/profile">
+                        <ListItem>
 
-                        <ListItemIcon>
-                            <i className="material-icons" style={{ color: '#FF5722' }}>
-                                account_box
-                            </i>
-                        </ListItemIcon>
-                        <ListItemText primary="Post a Project"
+                            <ListItemIcon>
+                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                    account_box
+                                </i>
+                            </ListItemIcon>
+                            <ListItemText primary="My Profile"
 
-                        />
+                            />
 
-                    </ListItem>
+                        </ListItem>
 
                     </Link>
                     {/*<Divider />*/}
 
 
 
-                    <Link to="/onGoingProjects">
+                    <Link to="/pOngoingProjects">
 
-                    <ListItem>
-                        <ListItemIcon>
-                            <i className="material-icons"  style={{ color: '#FF5722' }}>
-                                ballot
-                            </i>
-                        </ListItemIcon>
-                        <ListItemText primary="My Projects"/>
-                    </ListItem>
+                        <ListItem>
+                            <ListItemIcon>
+                                <i className="material-icons"  style={{ color: '#FF5722' }}>
+                                    ballot
+                                </i>
+                            </ListItemIcon>
+                            <ListItemText primary="My Projects"/>
+                        </ListItem>
                     </Link>
                     {/*<Divider />*/}
 
-                    <Link to="/incompleteProjects">
-                    <ListItem>
-                        <ListItemIcon>
-                            <i className="material-icons"  style={{ color: '#FF5722' }}>
-                                navigate_next
-                            </i>
-                        </ListItemIcon>
-                        <ListItemText primary="On Going Projects"/>
-                    </ListItem>
+                    <Link to="/pIncompleteProjects">
+                        <ListItem>
+                            <ListItemIcon>
+                                <i className="material-icons"  style={{ color: '#FF5722' }}>
+                                    navigate_next
+                                </i>
+                            </ListItemIcon>
+                            <ListItemText primary="On Going Projects"/>
+                        </ListItem>
 
                     </Link>
 

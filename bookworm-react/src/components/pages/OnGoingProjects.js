@@ -2,6 +2,8 @@ import React, {Component, Fragment} from "react";
 import axios from "axios";
 import Proposals from "../layout/Proposals";
 import Appbar from '../layout/AppBar'
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 
 
@@ -51,6 +53,25 @@ class OnGoingProjects extends Component {
             <Fragment>
 
                 <Appbar />
+
+                <Grid container justify="center">
+
+                    <Grid container justify="center">
+                        <Grid item>
+                            <br/>
+                            <br/>
+
+                            <br/>
+
+                            <Typography component="h1" variant="display1" gutterBottom>
+                                Projects posted by you
+                            </Typography>
+                            <br/>
+                            <br/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
 
                 {
                     this.state.data.map((data, index) =>

@@ -22,16 +22,16 @@ const HomePage = ({isAuthenticated, logout}) => (
         <div>
             <Catagories/>
         </div>
-        <h1>HomePage</h1>
-        {isAuthenticated ? (
-            <button onClick={() => logout()}>logout</button>
-        ) : (
-            <div>
-                {/* <button onClick={() => logout()}>logout</button> */}
-                <Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link>
-                <i class="material-icons">more_vert</i>
-            </div>
-        )}
+        {/*<h1>HomePage</h1>*/}
+        {/*{isAuthenticated ? (*/}
+        {/*    <button onClick={() => logout()}>logout</button>*/}
+        {/*) : (*/}
+        {/*    <div>*/}
+        {/*        /!* <button onClick={() => logout()}>logout</button> *!/*/}
+        {/*        <Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link>*/}
+        {/*        <i class="material-icons">more_vert</i>*/}
+        {/*    </div>*/}
+        {/*)}*/}
     </div>
 );
 

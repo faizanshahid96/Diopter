@@ -4,6 +4,8 @@ import "../vendor/fontawesome-free/css/all.min.css";
 // import "../vendor/bootstrap/css/bootstrap.min.css";
 import "../vendor/magnific-popup/magnific-popup.css";
 import "../css/creative.css";
+import {Link} from "react-router-dom";
+
 
 class Carousel extends Component {
     state = {};
@@ -23,21 +25,24 @@ class Carousel extends Component {
                         </div>
                         <div class="row align-items-center">
                             <div class="col-xs-2 col-xs-offset-4">
-                                <a
+                                <Link to='/login'> <a
                                     class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-                                    href="#services"
+                                    // href="http://localhost:3000/login"
                                 >
                                     Post project
                                 </a>
+                                </Link>
                             </div>
 
                             <div class="col-xs-2 ">
+                                <Link to='/login'>
                                 <a
                                     class="btn btn-primary-outline btn-xl text-uppercase js-scroll-trigger"
-                                    href="#services"
+                                    href="http://localhost:3000/login"
                                 >
-                                    photographer?{" "}
+                                    photographer?
                                 </a>
+                                </Link>
                             </div>
 
                             {/* <div class="col-xs-2 col-xs-offset-4">

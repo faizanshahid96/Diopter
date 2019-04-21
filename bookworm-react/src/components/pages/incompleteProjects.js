@@ -15,6 +15,8 @@ import IncompleteProjects from "../layout/incompletedProjects"
 import AppBar from "../layout/AppBar"
 import Drawer from "../layout/Profile_Drawer"
 import Profile from "../layout/ProfilePicture"
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 
 // this page shows the projects that are not submitted this is the client's side
@@ -72,6 +74,25 @@ class incompleteProjects extends Component {
                 {/*<Profile/>*/}
 
                 {/*<Drawer/>*/}
+
+                <Grid container justify="center">
+
+                    <Grid container justify="center">
+                        <Grid item>
+                            <br/>
+                            <br/>
+
+                            <br/>
+
+                            <Typography component="h1" variant="display1" gutterBottom>
+                                These project needed to be submitted
+                            </Typography>
+                            <br/>
+                            <br/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
 
                 {
                     this.state.data.map((data, index) =>

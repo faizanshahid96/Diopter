@@ -205,6 +205,7 @@ class SignupForm extends Component {
                                                 control={<Radio color="primary" />}
                                                 label="yes"
                                                 labelPlacement="start"
+
                                             />
                                             {/*</Grid>*/}
                                             {/*<Grid item xs={6}>*/}
@@ -219,7 +220,7 @@ class SignupForm extends Component {
 
                                         </RadioGroup>
 
-                                        <Button primary>Login</Button>
+                                        <Button primary style={{ background: '#FF5722'}}>Sign Up</Button>
                                     </Form>
 
                                 </div>

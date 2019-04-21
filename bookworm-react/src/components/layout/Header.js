@@ -16,6 +16,8 @@ import Validator from "validator";
 import {Form} from "semantic-ui-react/dist/commonjs/collections/Form";
 import {Message} from "semantic-ui-react/dist/commonjs/collections/Message";
 import InlineError from "../forms/LoginForm";
+import Navbar from "../navbar/Navbar";
+
 
 function TabContainer({children, dir}) {
     return (
@@ -109,6 +111,8 @@ class FullWidthTabs extends React.Component {
 
         return (
             <Fragment>
+
+                <Navbar/>
                 <Grid container justify="center" className={classes.background}>
                     <Grid container justify="center">
                         <Grid item>
@@ -116,21 +120,23 @@ class FullWidthTabs extends React.Component {
                             <br/>
                             <br/>
                             <br/>
-                            <h1>Login</h1>
-                        </Grid>
-                    </Grid>
-
-
-                    <Grid container justify="center">
-                        <Grid item>
-                            <br/>
-                            <Typography component="h1" variant="headline" gutterBottom>
-                                Don't have an account? Sign Up
+                            <Typography component="h1" variant="display1" style={{ color: '#FF5722'}} gutterBottom>
+                                Login
                             </Typography>
-                            <br/>
-                            <br/>
                         </Grid>
                     </Grid>
+
+
+                    {/*<Grid container justify="center">*/}
+                    {/*    <Grid item>*/}
+                    {/*        <br/>*/}
+                    {/*        <Typography component="h1" variant="headline" gutterBottom>*/}
+                    {/*            Don't have an account? Sign Up*/}
+                    {/*        </Typography>*/}
+                    {/*        <br/>*/}
+                    {/*        <br/>*/}
+                    {/*    </Grid>*/}
+                    {/*</Grid>*/}
 
                 </Grid>
 
