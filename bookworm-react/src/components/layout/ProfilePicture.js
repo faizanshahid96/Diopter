@@ -141,11 +141,6 @@ class RecipeReviewCard extends React.Component {
                 this.setState({pictureLink: res.data[0].profilePicture});
                 this.setState({gallery1: res.data[0].gallery});
 
-                console.log(this.state.gallery1);
-                console.log(this.state.gallery1);
-                console.log(this.state.gallery1);
-
-
 
 
                 const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
@@ -366,7 +361,7 @@ class RecipeReviewCard extends React.Component {
 
                                 <div className="image-upload">
                                     <label htmlFor="file-input">
-                                        <img  alt='lol' src="https://blackrockdigital.github.io/startbootstrap-creative/img/portfolio/fullsize/1.jpg" width='200' height='200'/>
+                                        <img  alt='lol' src="http://localhost:8080/photo-camera.png" width='200' height='200'/>
                                     </label>
 
                                     <input id="file-input"  onChange={this.fileSelectedHandler} type="file" style={{display: 'none'}}/>

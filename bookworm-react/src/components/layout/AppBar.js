@@ -61,12 +61,30 @@ class ButtonAppBar extends React.Component {
             <div className={classes.fullList}>
                 <List>
 
+                    <Link to="/myProfile">
+                        <ListItem>
+
+                            <ListItemIcon>
+                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                    account_box
+                                </i>
+                            </ListItemIcon>
+                            <ListItemText primary="My Profile"
+
+                            />
+
+                        </ListItem>
+
+                    </Link>
+
+
                     <Link to="/postproject">
                     <ListItem>
 
                         <ListItemIcon>
+
                             <i className="material-icons" style={{ color: '#FF5722' }}>
-                                account_box
+                                control_point
                             </i>
                         </ListItemIcon>
                         <ListItemText primary="Post a Project"

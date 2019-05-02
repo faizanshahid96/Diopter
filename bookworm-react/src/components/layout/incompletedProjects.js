@@ -88,7 +88,9 @@ class IncompleteProjects extends React.Component {
         project_id: '',
         photographer_id: '',
         client_id: '',
-        uploadedProject:''
+        uploadedProject:'',
+        handleOpen: false,
+        report: ''
 
     };
 
@@ -148,19 +150,19 @@ class IncompleteProjects extends React.Component {
 
             });
 
+ };
 
+    openReport = (id) => {
+        this.setState({handleOpen: true});
 
+        this.setState({project_id:id});
 
-
-
-
-
-        // this.setState({project_id: id});
-
-        // console.log(id);
-
-        // this.recieveData(id);
     };
+
+
+
+
+
 
 
     recieveData = (id) => {
@@ -179,6 +181,33 @@ class IncompleteProjects extends React.Component {
     handleClose = () => {
 
         this.setState({open: false});
+    };
+
+
+    handleOpen = () => {
+
+        this.setState({handleOpen: false});
+    };
+
+    datachange = event => {
+
+        this.setState({[event.target.name]: event.target.value});
+    };
+
+
+    reportHere = () => {
+
+        axios.post("/api/customerCare", {
+            project_id: this.state.project_id,
+            client_id: localStorage.email,
+            complain:this.state.report
+        }).then()
+            .catch(error => console.log(error));
+
+
+        this.setState({handleOpen: false});
+
+
     };
 
 
@@ -257,6 +286,19 @@ class IncompleteProjects extends React.Component {
                                     </div>
 
                                 </Grid>
+
+                                <Grid item>
+
+                                    <div className="ui button"
+                                         id={this.props.data._id}
+                                         onClick={this.openReport.bind(this, this.props.data._id)}
+                                    >
+                                        Report
+
+
+                                    </div>
+
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Paper>
@@ -301,6 +343,57 @@ class IncompleteProjects extends React.Component {
                             </Button>
                             <Button onClick={this.handleClose} color="primary" style={{ color : "#80D144" }} >
                                 Upload
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
+
+                {/*dialogue box to report a user can be done here*/}
+
+                <div>
+                    {/*<Button variant="outlined" color="primary" onClick={this.handleClickOpen}>*/}
+                    {/*Open form dialog*/}
+                    {/*</Button>*/}
+                    <Dialog
+                        open={this.state.handleOpen}
+                        onClose={this.handleOpen}
+                        aria-labelledby="form-dialog-title"
+                    >
+                        <DialogTitle id="form-dialog-title">You can report your complain here</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Your complain will be entertained by customer care service
+                            </DialogContentText>
+
+                            <Grid container justify = "center">
+
+                                <TextField
+                                    error
+                                    id="outlined-error"
+                                    label="write your complain here"
+                                    name="report"
+                                    value={this.state.report}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    variant="outlined"
+                                    onChange={this.datachange}
+                                    fullWidth
+                                    multiline
+                                />
+
+                            </Grid>
+
+
+
+
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleCloseAndUpdate} color="primary" style={{ color : "#FF1329" }}>
+                                Cancel
+                            </Button>
+                            <Button onClick={this.reportHere} color="primary" style={{ color : "#80D144" }} >
+                                Report
                             </Button>
                         </DialogActions>
                     </Dialog>

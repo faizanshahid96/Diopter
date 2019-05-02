@@ -19,6 +19,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import axios from "axios";
 import {Router, Route, Switch} from "react-router";
 import moment from 'moment';
+import {Message} from "semantic-ui-react";
+
 
 const styles = theme => ({
     appBar: {
@@ -82,12 +84,35 @@ class PostedProject extends React.Component {
         this.state = {
             data: props.data,
             index: props.index,
-            id: ''
+            id: '',
+
 
         };
-        console.log("FROM POSTED PROJECTS");
-        // console.log(props.data);
-        //this.props.deletePorject(index);
+
+        const link = "/api/clientProfile/getProfile/"+this.props.data._id;
+
+        console.log(link);
+        axios.get(link)
+            .then(res => {
+
+                // console.log(res.data);
+
+                this.setState({pictureLink: res.data[0].profilePicture});
+                this.setState({name: res.data[0].name});
+
+
+
+                const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
+
+                this.setState({pictureLink:opp});
+
+                console.log(this.state.pictureLink);
+            });
+
+        console.log('hello');
+
+
+
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -125,31 +150,33 @@ class PostedProject extends React.Component {
 
     handleClickOpenDialogue = () => {
         this.setState({openDialogue: true});
+        this.setState({error : false});
 
     };
 
     sendData = () => {
 
+        if(this.state.proposal === undefined || this.state.budget === undefined){
+            this.setState({error : true});
 
-        axios.post("/api/sendProposal", {
-            proposal: this.state.proposal,
-            budget: this.state.budget,
-            project_id: this.state.id,
-            user_id: localStorage.email,
-        }).catch(error => console.log(error));
-
-
-        // axios.get(`/api/sendProposal/`)
-        //     .then(res => {
-        //         // const persons = res.data;
-        //         // this.setState({ persons });
-        //         console.log(res.data)
-        //     });
+        }else if(this.state.proposal === '' || this.state.budget === ""){
+            this.setState({error : true});
+        }
+        else{
+            axios.post("/api/sendProposal", {
+                proposal: this.state.proposal,
+                budget: this.state.budget,
+                project_id: this.state.id,
+                user_id: localStorage.email,
+            }).catch(error => console.log(error));
 
 
-        this.props.recieveData();
-        this.setState({openDialogue: false});
-        this.setState({open: false});
+            this.props.recieveData();
+            this.setState({openDialogue: false});
+            this.setState({open: false});
+        }
+
+
 
 
     };
@@ -159,11 +186,20 @@ class PostedProject extends React.Component {
         this.setState({openDialogue: false});
     };
 
+
+
+
+
+
     render() {
         const {classes} = this.props;
         return (
             <Fragment>
                 <div>
+
+
+
+
 
                     {/*{this.props.data}*/}
                     {/* this code is for the stuff inside dialougue box */}
@@ -207,7 +243,7 @@ class PostedProject extends React.Component {
                         <Grid container justify="center">
                             <Avatar
                                 alt="Remy Sharp"
-                                src="https://pbs.twimg.com/media/BduTxWnIUAAKT_5.jpg"
+                                src={this.state.pictureLink}
                                 className={classes.bigAvatar}
                                 style={{marginTop: 40}}
                             />
@@ -216,7 +252,7 @@ class PostedProject extends React.Component {
                         <Grid container justify="center">
                             <br/>
                             <Typography gutterBottom variant="subtitle1" style={{marginTop: 40}}>
-                                Rami Maleck
+                                {this.state.name}
                             </Typography>
                         </Grid>
 
@@ -292,7 +328,7 @@ class PostedProject extends React.Component {
                                     <ButtonBase className={classes.image}>
                                         <Avatar
                                             alt="Remy Sharp"
-                                            src="https://pbs.twimg.com/media/BduTxWnIUAAKT_5.jpg"
+                                            src={this.state.pictureLink}
                                             className={classes.avatar}
                                         />
                                     </ButtonBase>
@@ -347,6 +383,19 @@ class PostedProject extends React.Component {
                         <DialogContentText>
                             Start writing your proposal, try to be brief and clear.
                         </DialogContentText>
+
+                        <Grid container justify="center">
+                            <Grid item xs={12}>
+                                {this.state.error && (
+                                    <Message negative>
+                                        <Message.Header>Empty Fields are not allowed</Message.Header>
+
+                                    </Message>
+                                )}
+                            </Grid>
+                        </Grid>
+
+
                         <Grid container>
                             <Grid xs={12}>
                                 <TextField

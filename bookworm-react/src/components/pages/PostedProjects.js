@@ -8,10 +8,14 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import PostProject from "../layout/PostProject";
 import PostedProject from "../layout/PostedProject";
+import Filters from "../layout/Filters"
+import AppBar from "../layout/PhotographerAppBar"
 // import {logout} from "../../actions/auth";
 // import OnGoingProjects from "../layout/OnGoingProjects";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
+import Grid from "@material-ui/core/Grid";
+import {Message} from "semantic-ui-react";
 
 
 class OnGoingProjects extends Component {
@@ -34,7 +38,7 @@ class OnGoingProjects extends Component {
 
     recieveData = () => {
 
-        const link = "/api/postProject/"+localStorage.email;
+            const link = "/api/postProject/"+localStorage.email;
 
         axios.get(link)
             .then(res => {
@@ -42,10 +46,21 @@ class OnGoingProjects extends Component {
                 this.setState({data: res.data});
             });
 
-        console.log('hello');
+
+
+
+
+
+    };
+
+    newRecieveData = (lol) => {
+
+        this.setState({data:lol});
     };
 
     componentDidMount() {
+
+
 
 
         this.recieveData();
@@ -59,6 +74,12 @@ class OnGoingProjects extends Component {
 
         return (
             <Fragment>
+
+
+                <AppBar/>
+
+                <Filters recieveData={this.newRecieveData.bind(this)} recieveDataAgain={this.recieveData.bind(this)}/>
+
                 {
                     this.state.data.map((data, index) =>
                         <PostedProject data={data} recieveData={this.recieveData.bind(this)}/> //this used to populate my projects key={"PP" + index}

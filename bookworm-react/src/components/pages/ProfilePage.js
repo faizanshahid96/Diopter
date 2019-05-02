@@ -12,7 +12,7 @@ import PostedProject from "../layout/PostedProject";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
 import ProfilePicture from "../layout/ProfilePicture"
-import AppBar from "../layout/AppBar"
+import AppBar from "../layout/PhotographerAppBar"
 
 
 class ProfilePage extends Component {

@@ -128,7 +128,6 @@ router.get("/email/:id",(req,res,next) => { //{email:'shahreyar166@gmail.com'}
 
 });
 
-
 router.get("/:id",(req,res,next) => {
 
 
@@ -200,6 +199,14 @@ router.post("/uploadProject/:project_id", upload.single('image'), (req, res) => 
 
 });
 
+
+
+
+
+
+
+
+
 //to get the final project uploaded by photographer
 
 
@@ -209,15 +216,20 @@ router.get("/getSubmission/:id",(req,res,next) => {
 
 
     console.log('hello');
-    PostProject.find ({_id:req.params.id})
-        .exec()
-        .then(doc => {
-            console.log(doc);
-            res.status(200).json(doc)
-        })
-        .catch(err => console.log(err));
+        PostProject.find ({_id:req.params.id})
+            .exec()
+            .then(doc => {
+                console.log(doc);
+                res.status(200).json(doc)
+            })
+            .catch(err => console.log(err));
 
 });
+
+
+
+
+
 
 
 

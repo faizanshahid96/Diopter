@@ -38,7 +38,7 @@ const styles = {
 };
 
 
-class ButtonAppBar extends React.Component {
+class PhotoApp extends React.Component {
 
     state = {
         top: false,
@@ -79,6 +79,18 @@ class ButtonAppBar extends React.Component {
                     {/*<Divider />*/}
 
 
+
+                    <Link to="/projects">
+
+                        <ListItem>
+                            <ListItemIcon>
+                                <i className="material-icons"  style={{ color: '#FF5722' }}>
+                                    ballot
+                                </i>
+                            </ListItemIcon>
+                            <ListItemText primary="Send Proposals"/>
+                        </ListItem>
+                    </Link>
 
                     <Link to="/pOngoingProjects">
 
@@ -178,10 +190,10 @@ class ButtonAppBar extends React.Component {
     }
 }
 
-ButtonAppBar.propTypes = {
+PhotoApp.propTypes = {
     classes: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired
 };
 
-export default connect(null, {logout})(withStyles(styles)(ButtonAppBar));
+export default connect(null, {logout})(withStyles(styles)(PhotoApp));
 // export default withStyles(styles)(ButtonAppBar)

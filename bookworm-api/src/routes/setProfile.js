@@ -89,23 +89,21 @@ router.post("/upload/:user_id", upload.single('image'), (req, res) => {
 });
 
 
+// to recieve photographer's profile and show it to user
+
+router.get("/recieveProfile/:user_id",(req,res,next) => {
+
+    const user_id = req.params.user_id;
+
+    PhotographerProfile.find({ user_id : user_id }).exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
 
 
-
-
-    // const photographer = new PhotographerProfile({
-    //     profilePicture: req.file.path
-    // });
-    //
-    // photographer
-    //     .save()
-    //     .then(result => {
-    //         console.log(result);
-    //         res.status(201).json(result);
-    //     })
-    //     .catch(err => console.log(err));
-
-// });
+});
 
 
 

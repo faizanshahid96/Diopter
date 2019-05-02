@@ -35,6 +35,8 @@ class DatePickers extends React.Component {
         return (
             <form className={classes.container} noValidate>
                 <TextField
+                    style={{  color : "#ffffff" }}
+                    error
                     id="date"
                     label="Event Date"
                     name='date'

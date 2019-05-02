@@ -29,6 +29,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import Snackbar from './Snackbar';
 
 
 const styles = theme => ({
@@ -94,7 +95,8 @@ class IncompleteProjects extends React.Component {
         project_id: '',
         photographer_id: '',
         client_id: '',
-        pic: true,
+        check:false
+
 
     };
 
@@ -102,94 +104,16 @@ class IncompleteProjects extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {data: []};
+        this.state = {data: [], message:'Only zip files are allowed',        pic: true,
+        };
 
     }
 
-    // handleClickOpenDialogue = (id) => {
-    //     this.setState({openDialogue: true});
-    //
-    //
-    //     // console.log(this.state.data.filter(object => object._id.includes(id)));
-    //
-    //
-    //     this.state.data.filter(object => object._id.includes(id)).map((data, index) => {
-    //         this.setState({proposal: data.proposal});
-    //         this.setState({budget: data.budget});
-    //         this.setState({photographer_id: data.pUser_id});
-    //         this.setState({project_id: data.project_id});
-    //
-    //         // console.log(this.state.photographer_id);
-    //         return 0;
-    //     })
-    //
-    //
-    // };
-    //
-    // handleCloseDialogue = () => {
-    //     this.setState({openDialogue: false});
-    // };
-    //
-    // handleChange = panel => (event, expanded) => {
-    //     this.setState({
-    //         expanded: expanded ? panel : false
-    //     });
-    // };
-    //
-    // handleClickOpen = (id) => {
-    //     this.setState({open: true});
-    //
-    //     // console.log(id);
-    //
-    //     this.recieveData(id);
-    // };
-    //
-    //
-    // recieveData = (id) => {
-    //
-    //     const route = '/api/sendProposal/' + id;
-    //     // `/api/sendProposal/5ca386873452bc1ebcba5b93`
-    //     axios.get(route)
-    //         .then(res => {
-    //
-    //
-    //             // console.log(res.data);
-    //             this.setState({data: res.data});
-    //         });
-    // };
-    //
-    // handleClose = () => {
-    //     this.setState({open: false});
-    // };
-    //
-    //
-    // startProject = () => {
-    //
-    //     const route = 'api/postProject/' + this.state.project_id;
-    //
-    //     axios.get(route)
-    //         .then(res => {
-    //
-    //
-    //             // console.log(res.data);
-    //             this.setState({client_id: res.data});
-    //
-    //         });
-    //
-    //     axios.post("/api/projects_proposals", {
-    //         project_id: this.state.project_id,
-    //         client_id: this.state.client_id,
-    //         photographer_id: this.state.photographer_id
-    //     }).then()
-    //         .catch(error => console.log(error));
-    //
-    //     this.props.receiveData();
-    //
-    //     this.setState({openDialogue: false});
-    //     this.setState({open: false});
-    //
-    //
-    // };
+
+    closeSnackbar=()=>{
+        this.setState({check:false})
+    };
+
 
     handleClickOpen = (id) => {
         console.log(id);
@@ -198,26 +122,14 @@ class IncompleteProjects extends React.Component {
     };
 
     handleCloseAndUpdate = () => {
-        // this.recieveData();
         this.setState({open: false});
-        this.setState({pic:true})
+        this.setState({pic:true});
+        this.setState({check:false});
     };
 
 
     handleClose = () => {
 
-        if (this.state.selectedFile === null){
-
-
-            // this.sendData();
-            // this.updatedData();
-
-        }
-        else{
-            // this.upload();
-            // this.sendData();
-            // this.updatedData();
-        }
 
         this.upload();
         this.props.receiveData();
@@ -229,31 +141,64 @@ class IncompleteProjects extends React.Component {
 
     fileSelectedHandler = event => {
 
-        console.log(event.target.files[0]);
-        this.setState({
-            selectedFile: event.target.files[0]
-        });
+        this.setState({check:false});
 
-        this.setState({
-            pictureLink: URL.createObjectURL(event.target.files[0])
-        });
-        this.setState({pic:false})
+        console.log(event.target.files[0].name);
+
+
+        const string = event.target.files[0].name;
+
+        this.setState({link:string});
+
+        const end= string.length ;
+
+        const till= end-3;
+
+        const finalString = string.substring(end,till);
+
+        if (finalString === 'zip'){
+            this.setState({
+                selectedFile: event.target.files[0]
+            });
+
+            this.setState({
+                pictureLink: URL.createObjectURL(event.target.files[0])
+            });
+            this.setState({pic:false});
+            this.setState({valid: true});
+        }
+        else{
+            this.setState({check : true});
+        }
+
+
+
 
     };
 
     upload = () => {
 
-        const fd = new FormData();
+        if (this.state.valid){
+            const fd = new FormData();
 
-        fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+            fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
 
-        const link = `/api/postProject/uploadProject/`+this.state.project_id;
+            const link = `/api/postProject/uploadProject/`+this.state.project_id;
 
-        axios.post(link, fd)
-            .then(res => {
+            axios.post(link, fd)
+                .then(res => {
 
-                return true;
-            });
+                    return true;
+                });
+
+
+        }
+        else{
+            this.setState({message: "this file can not be uploaded"});
+            this.setState({check : true});
+        }
+
+
 
 
     };
@@ -273,6 +218,11 @@ class IncompleteProjects extends React.Component {
 
         return (
             <div>
+
+
+
+                    <Snackbar data={this.state.message} check={this.state.check} func={this.closeSnackbar.bind(this)}/>
+
                 <br/>
                 <br/>
                 <br/>
@@ -301,16 +251,7 @@ class IncompleteProjects extends React.Component {
                                         onClick={this.handleClickOpen.bind(this, this.props.data._id)}
 
                                     >Submit</div>
-                                    {/*<Button*/}
-                                    {/*variant="outlined"*/}
-                                    {/*color="primary"*/}
-                                    {/*id={this.props.data._id}*/}
-                                    {/*onClick={this.handleClickOpen.bind(this, this.props.data._id)}*/}
-                                    {/*style={{ marginTop: 7 }}*/}
-                                    {/*>*/}
 
-                                    {/*View Proposals*/}
-                                    {/*</Button>*/}
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -320,9 +261,7 @@ class IncompleteProjects extends React.Component {
                 {/*dialogue box starts from here*/}
 
                 <div>
-                    {/*<Button variant="outlined" color="primary" onClick={this.handleClickOpen}>*/}
-                    {/*Open form dialog*/}
-                    {/*</Button>*/}
+
                     <Dialog
                         open={this.state.open}
                         onClose={this.handleClose}
@@ -338,12 +277,25 @@ class IncompleteProjects extends React.Component {
                             <Grid container justify = "center">
 
                                 <div className="image-upload">
+
                                     <label htmlFor="file-input">
-                                        <img  alt='lol' src="https://blackrockdigital.github.io/startbootstrap-creative/img/portfolio/fullsize/1.jpg" width='200' height='200'/>
+                                        <img  alt='lol' src="http://localhost:8080/upload (1).png" width='200' height='200'/>
                                     </label>
 
                                     <input id="file-input"  onChange={this.fileSelectedHandler} type="file" style={{display: 'none'}}/>
 
+                                    {!   this.state.pic ? (
+
+                                        <figure className="figure">
+                                            <img id="target"  src="http://localhost:8080/zip.png"   width='100' height='100'/>
+
+                                            <figcaption className="figure-caption">{this.state.link}</figcaption>
+                                        </figure>
+
+
+                                    ) : (
+                                        <div></div>
+                                    )}
 
 
                                 </div>
@@ -367,7 +319,9 @@ class IncompleteProjects extends React.Component {
 
 
             </div>
-            // </div>
+
+
+
         );
     }
 }

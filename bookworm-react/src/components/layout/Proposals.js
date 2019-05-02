@@ -27,6 +27,8 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
+import {Link} from "react-router-dom";
+
 
 
 const styles = theme => ({
@@ -128,8 +130,8 @@ class ControlledExpansionPanels extends React.Component {
             this.setState({budget: data.budget});
             this.setState({photographer_id: data.pUser_id});
             this.setState({project_id: data.project_id});
-
-            console.log(this.state.photographer_id);
+            localStorage.profile_id = data.pUser_id;
+            console.log(localStorage.profile_id);
             return 0;
         })
 
@@ -148,8 +150,6 @@ class ControlledExpansionPanels extends React.Component {
 
     handleClickOpen = (id) => {
         this.setState({open: true});
-
-        // console.log(id);
 
         this.recieveData(id);
     };
@@ -372,11 +372,20 @@ class ControlledExpansionPanels extends React.Component {
                                     />
                                 </Grid>
                             </Grid>
+
+
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={this.handleCloseDialogue} color="primary">
+                           <Button onClick={this.handleCloseDialogue} color="primary">
                                 Cancel
                             </Button>
+                           <Link to='/photographerProfile'> <Button
+                                color="primary"
+
+                            >
+                                View Profile
+                            </Button>
+                           </Link>
                             <Button onClick={this.startProject} color="primary">
                                 Start Project
                             </Button>

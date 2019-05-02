@@ -9,7 +9,9 @@ import practice from "./routes/practice";
 import postProject from "./routes/postProject";
 import projectsProposals from "./routes/projects_proposals"
 import sendProposal from "./routes/sendProposal";
-import SetProfile from "./routes/setProfile"
+import SetProfile from "./routes/setProfile";
+import ClientProfile from './routes/clientProfile';
+import CustomerCare from './routes/customerCare';
 
 const app = express();
 
@@ -28,6 +30,10 @@ app.use("/api/postProject",postProject);
 app.use("/api/sendProposal",sendProposal);
 app.use("/api/projects_proposals",projectsProposals);
 app.use("/api/setProfile", SetProfile);
+app.use("/api/clientProfile", ClientProfile);
+app.use("/api/customerCare", CustomerCare);
+
+
 app.post("/api/auth", (req, res) => {
   res.status(400).json({ errors: { global: "Invalid Credentials" } });
 });
