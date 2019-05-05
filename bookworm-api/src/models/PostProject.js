@@ -57,6 +57,15 @@ const schema = new mongoose.Schema(
             required: false,
 
         },
+        finalSubmit:{
+            type: Boolean,
+            required : false
+        },
+        rating:{
+            type: Boolean,
+            required : false
+        },
+
 
 
     },

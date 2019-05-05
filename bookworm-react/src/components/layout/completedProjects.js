@@ -4,28 +4,18 @@ import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
-import FolderIcon from "@material-ui/icons/Folder";
-import DeleteIcon from "@material-ui/icons/Delete";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
+import Rating from 'material-ui-rating';
 import {Link} from "react-router-dom";
+
 
 
 
@@ -99,9 +89,51 @@ class IncompleteProjects extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {data: []};
+        this.state = {data: [], star:0};
 
-        const link = "/api/setProfile/getPhotographerId/"+this.props.data._id;
+
+        //check if this project is already is rated
+
+
+        console.log(this.props.data.rating);
+
+
+        this.setState({rateCheck : this.props.data.rating});
+
+
+
+
+
+
+
+    }
+
+
+
+    handleClickOpen = (id) => {
+        this.setState({open: true});
+
+        const route = '/api/postProject/getSubmission/' + id;
+
+        axios.get(route)
+            .then(res => {
+
+                this.setState({uploadedProject: res.data[0].uploadedProject });
+
+                const opp = "http://localhost:8080/"+this.state.uploadedProject.substring(7, 100);
+
+                this.setState({uploadedProject:opp});
+
+                console.log(this.state.uploadedProject);
+
+            });
+
+    };
+
+    openRate = (id) => {
+        this.setState({handleOpen: true});
+
+        const link = "/api/setProfile/getPhotographerId/"+id;
 
         axios.get(link)
             .then(res => {
@@ -113,46 +145,7 @@ class IncompleteProjects extends React.Component {
             });
 
 
-
-
-
-    }
-
-    handleClickOpenDialogue = (id) => {
-        this.setState({openDialogue: true});
-
-
-        // console.log(this.state.data.filter(object => object._id.includes(id)));
-
-
-        this.state.data.filter(object => object._id.includes(id)).map((data, index) => {
-            this.setState({proposal: data.proposal});
-            this.setState({budget: data.budget});
-            this.setState({photographer_id: data.pUser_id});
-            this.setState({project_id: data.project_id});
-
-            // console.log(this.state.photographer_id);
-            return 0;
-        })
-
-
-    };
-
-    handleCloseDialogue = () => {
-        this.setState({openDialogue: false});
-    };
-
-    handleChange = panel => (event, expanded) => {
-        this.setState({
-            expanded: expanded ? panel : false
-        });
-    };
-
-
-    openReport = (id) => {
-        this.setState({handleOpen: true});
-
-        this.setState({project_id:id});
+        this.setState({project_id : id});
 
     };
 
@@ -192,31 +185,28 @@ class IncompleteProjects extends React.Component {
     };
 
 
-    reportHere = () => {
+    rate = () => {
 
-        axios.post("/api/customerCare", {
-            project_id: this.state.project_id,
-            client_id: localStorage.email,
-            complain:this.state.report
-        }).then()
+        console.log(this.state.photographerEmail);
+
+        axios.post("/api/setProfile/rating", {
+            photographer : this.state.photographerEmail,
+            rating : this.state.star,
+            project_id : this.state.project_id
+        })
             .catch(error => console.log(error));
-
 
         this.setState({handleOpen: false});
 
 
+        this.props.receiveData();
+
+
+
     };
 
-
-    redirectToProfile = (id) => {
-
-        console.log(id);
-
-        localStorage.profile_id=id;
-
-        this.props.redirect();
-
-
+    handleCloseAndUpdate = () => {
+        this.setState({open: false});
     };
 
 
@@ -234,6 +224,10 @@ class IncompleteProjects extends React.Component {
 
         return (
             <div>
+
+
+
+
                 <br/>
                 <br/>
                 <br/>
@@ -247,9 +241,13 @@ class IncompleteProjects extends React.Component {
                                         <Typography gutterBottom variant="subtitle1">
 
                                             {this.props.data.projectName}
+
                                             {/*I am looking for an event photographer for a conference in*/}
                                             {/*Lahore*/}
                                         </Typography>
+
+
+
                                         <Typography gutterBottom>21 days left</Typography>
                                     </Grid>
                                 </Grid>
@@ -259,27 +257,38 @@ class IncompleteProjects extends React.Component {
 
                                     <div className="ui basic green button"
                                          id={this.props.data._id}
-                                         onClick={this.redirectToProfile.bind(this, this.state.photographerEmail)}
+                                         onClick={this.handleClickOpen.bind(this, this.props.data._id)}
                                     >
-                                        View Profile
+                                        View
+
+
                                     </div>
 
                                 </Grid>
 
 
+                                { this.props.data.rating ? (
 
-                                <Grid item>
+                                    <div></div>
 
-                                    <div className="ui button"
-                                         id={this.props.data._id}
-                                         onClick={this.openReport.bind(this, this.props.data._id)}
-                                    >
-                                        Report
+                                ) : (
+
+                                    <Grid item>
+
+                                        <div className="ui button"
+                                             id={this.props.data._id}
+                                             onClick={this.openRate.bind(this, this.props.data._id)}
+                                        >
+                                            Rate & Pay
+
+                                        </div>
+
+                                    </Grid>
 
 
-                                    </div>
 
-                                </Grid>
+                                )}
+
                             </Grid>
                         </Grid>
                     </Paper>
@@ -301,14 +310,23 @@ class IncompleteProjects extends React.Component {
                             <DialogContentText>
                                 The photographer submitted the project, now you are able to download it from here
                             </DialogContentText>
+                            <br/>
+                            <br/>
 
                             <Grid container justify = "center">
 
-                                {/*<Link to={this.state.uploadedProject}>*/}
+                                <img id="target"  src="http://localhost:8080/zip.png"   width='100' height='100'/>
 
-                                    <Button color="primary" style={{ color : "#FF1329" }} href={this.state.uploadedProject}>
+                            </Grid>
+
+
+
+                            <Grid container justify = "center">
+
+
+                                <Button color="primary" style={{ color : "#FF1329" }} href={this.state.uploadedProject}>
                                     Download
-                                    </Button>
+                                </Button>
 
                                 {/*</Link>*/}
 
@@ -321,9 +339,6 @@ class IncompleteProjects extends React.Component {
                         <DialogActions>
                             <Button onClick={this.handleCloseAndUpdate} color="primary" style={{ color : "#FF1329" }}>
                                 Cancel
-                            </Button>
-                            <Button onClick={this.handleClose} color="primary" style={{ color : "#80D144" }} >
-                                Upload
                             </Button>
                         </DialogActions>
                     </Dialog>
@@ -341,26 +356,18 @@ class IncompleteProjects extends React.Component {
                         onClose={this.handleOpen}
                         aria-labelledby="form-dialog-title"
                     >
-                        <DialogTitle id="form-dialog-title">You can report your complain here</DialogTitle>
+                        <DialogTitle id="form-dialog-title">Rate your photographer</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                Your complain will be entertained by customer care service
+                                Your rating will help other people in selecting photographer
                             </DialogContentText>
 
                             <Grid container justify = "center">
 
-                                <TextField
-                                    error
-                                    id="outlined-error"
-                                    label="write your complain here"
-                                    name="report"
-                                    value={this.state.report}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    variant="outlined"
-                                    onChange={this.datachange}
-                                    fullWidth
-                                    multiline
+                                <Rating
+                                    value={this.state.star}
+                                    max={5}
+                                    onChange={(value) => this.setState({star:value})}
                                 />
 
                             </Grid>
@@ -373,9 +380,10 @@ class IncompleteProjects extends React.Component {
                             <Button onClick={this.handleCloseAndUpdate} color="primary" style={{ color : "#FF1329" }}>
                                 Cancel
                             </Button>
-                            <Button onClick={this.reportHere} color="primary" style={{ color : "#80D144" }} >
-                                Report
+                            <Button onClick={this.rate} color="primary" style={{ color : "#80D144" }} >
+                                Rate
                             </Button>
+
                         </DialogActions>
                     </Dialog>
                 </div>

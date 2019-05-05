@@ -106,6 +106,74 @@ router.get("/recieveProfile/:user_id",(req,res,next) => {
 });
 
 
+//this function is to get email of photogrpher
+
+
+router.get("/getPhotographerId/:project_id",(req,res,next) => {
+
+    const project_id = req.params.project_id;
+
+    console.log(project_id);
+
+    PostProject.find({ _id : project_id }).exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
+
+
+});
+
+//this code is to set rating
+
+router.post("/rating", (req, res) => {
+    const photographerEmail = req.body.photographer;
+    const rating = req.body.rating;
+    const project_id = req.body.project_id;
+
+
+    PhotographerProfile.update(
+        { user_id: photographerEmail },
+        { $push: { rating: rating } }
+    ).exec()
+        .then(doc => {
+
+            PostProject.updateOne(
+                { _id: project_id },
+                { $set: { rating : true } }
+            ).exec()
+                .then(doc => {
+                    console.log(doc);
+                    res.status(200).json(doc)
+                })
+                .catch(err => console.log(err));
+
+
+
+        })
+        .catch(err => console.log(err));
+
+});
+
+//check rating
+
+
+router.post("/checkRating/:project_id", (req, res) => {
+
+    const project_id= req.params.project_id;
+
+    PostProject.find({ _id : project_id }).exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log(err));
+
+    console.log('hello');
+
+
+});
 
 
 export default router;

@@ -23,6 +23,10 @@ const schema = new mongoose.Schema(
         user_id: {
             type: String,
         },
+        rating : {
+            type : Array , "default" : []
+        },
+
 
     },
 

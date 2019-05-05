@@ -11,7 +11,7 @@ import PostedProject from "../layout/PostedProject";
 // import OnGoingProjects from "../layout/OnGoingProjects";
 import Proposals from "../layout/Proposals";
 import Practice from "../layout/Practice";
-import IncompleteProjects from "../layout/incompletedProjects"
+import CompletedProjects from "../layout/completedProjects"
 import AppBar from "../layout/AppBar"
 import Drawer from "../layout/Profile_Drawer"
 import Profile from "../layout/ProfilePicture"
@@ -41,13 +41,10 @@ class incompleteProjects extends Component {
 
     receiveData = () => {
 
-
         const user_id = localStorage.email;
-        axios.get(`/api/projects_proposals/` + user_id)
+        axios.get(`/api/projects_proposals/completed/` + user_id)
             .then(res => {
-
-
-                // console.log(res.data);
+                console.log(res.data);
                 this.setState({data: res.data});
             });
 
@@ -61,11 +58,6 @@ class incompleteProjects extends Component {
 
     }
 
-    redirect = () => {
-        this.props.history.push("/photographerProfile");
-
-    };
-
 
     render() {
 
@@ -76,9 +68,6 @@ class incompleteProjects extends Component {
 
                 <AppBar/>
 
-                {/*<Profile/>*/}
-
-                {/*<Drawer/>*/}
 
                 <Grid container justify="center">
 
@@ -90,7 +79,7 @@ class incompleteProjects extends Component {
                             <br/>
 
                             <Typography component="h1" variant="display1" gutterBottom>
-                                These project needed to be submitted
+                                Completed Projects
                             </Typography>
                             <br/>
                             <br/>
@@ -102,7 +91,7 @@ class incompleteProjects extends Component {
                 {
                     this.state.data.map((data, index) =>
 
-                        <IncompleteProjects data={data} key={"PP" + index} receiveData={this.receiveData.bind(this)} redirect={this.redirect.bind(this)}/>
+                        <CompletedProjects data={data} key={"PP" + index} receiveData={this.receiveData.bind(this)}/>
                     )
                 }
 
@@ -114,11 +103,7 @@ class incompleteProjects extends Component {
     }
 }
 
-incompleteProjects.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-};
+incompleteProjects.propTypes = {};
 
 export default incompleteProjects;
 

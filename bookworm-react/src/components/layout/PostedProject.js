@@ -47,6 +47,13 @@ const styles = theme => ({
         margin: "auto",
         maxWidth: 800
     },
+    paper2: {
+        padding: theme.spacing.unit * 2,
+        margin: "auto",
+        width: 1200,
+        marginLeft: 60,
+        marginRight: 50
+    },
     image: {
         width: 128,
         height: 128
@@ -212,14 +219,7 @@ class PostedProject extends React.Component {
                     >
                         <AppBar className={classes.appBar}>
                             <Toolbar>
-                                {/* <IconButton
-                  color="inherit"
-                  onClick={this.handleClose}
-                  aria-label="Close"
-                  className='pull-right'
-                >
-                  close
-                </IconButton> */}
+
                                 <Typography
                                     variant="h6"
                                     color="inherit"
@@ -240,81 +240,146 @@ class PostedProject extends React.Component {
                         </AppBar>
 
                         {/* start changing code from here */}
-                        <Grid container justify="center">
-                            <Avatar
-                                alt="Remy Sharp"
-                                src={this.state.pictureLink}
-                                className={classes.bigAvatar}
-                                style={{marginTop: 40}}
-                            />
-                        </Grid>
 
-                        <Grid container justify="center">
-                            <br/>
-                            <Typography gutterBottom variant="subtitle1" style={{marginTop: 40}}>
-                                {this.state.name}
-                            </Typography>
-                        </Grid>
 
-                        <Grid container justify="center">
-                            <Typography gutterBottom variant="subtitle1" style={{marginTop: 40}}>
-                                4.0
-                            </Typography>
-                        </Grid>
-                        <Grid container>
-                            <Grid
-                                item
-                                xs={12}
-                                style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
-                            >
-                                <Typography gutterBottom variant="subtitle1">
-                                    {this.props.data.projectName}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid container>
-                            <Grid
-                                item
-                                xs={10}
-                                style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
-                            >
-                                <Typography gutterBottom variant="subtitle1">
-                                    {this.props.data.description}
-                                </Typography>
-                            </Grid>
-                        </Grid>
+                        <Grid container style={{backgroundColor :"#FAFAFA" , width : "auto" ,height : 250} } >
 
-                        <Grid container>
-                            <Grid xs={4} sm={4}>
-                                <TextField
-                                    id="outlined-read-only-input"
-                                    label="Budget"
-                                    defaultValue={this.props.data.budget}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    InputProps={{
-                                        readOnly: true
-                                    }}
-                                    variant="outlined"
-                                    style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
+
+                            <Grid container justify="center">
+                                <Avatar
+                                    alt="Remy Sharp"
+                                    src={this.state.pictureLink}
+                                    className={classes.bigAvatar}
+                                    style={{marginTop: 40}}
                                 />
                             </Grid>
 
-                            <Grid xs={6} sm={6}>
-                                <TextField
-                                    id="outlined-read-only-input"
-                                    label="Location"
-                                    defaultValue={this.props.data.city}
-                                    className={classes.textField}
-                                    margin="normal"
-                                    InputProps={{
-                                        readOnly: true
-                                    }}
-                                    variant="outlined"
-                                    style={{marginTop: 70, marginLeft: 70}}
-                                />
+
+                            <Grid container justify="center">
+                                <br/>
+                                <Typography gutterBottom component="h2" variant="display2" style={{marginTop: 20}}>
+                                    {this.state.name}
+                                </Typography>
                             </Grid>
+
+
                         </Grid>
+
+
+
+                        <Grid container style={{backgroundColor :"#FAFAFA" , width : "auto" ,height : "auto" } } >
+
+
+
+                            <Paper className={classes.paper2} style={{marginTop: 100}}>
+
+                                <Grid container justify="center" style={{marginTop: 10, marginLeft: 4}}>
+                                    <Typography component="h2" variant="display1" gutterBottom>
+                                        Details
+                                    </Typography>
+                                </Grid>
+
+
+                                <Grid container>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
+                                    >
+                                        <Typography gutterBottom component="h2" variant="display1">
+                                            Project Title
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        style={{marginTop: 20, marginRight: 20, marginLeft: 70}}
+                                    >
+                                        <Typography gutterBottom variant="subtitle1">
+                                            {this.props.data.projectName}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid container>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
+                                    >
+                                        <Typography gutterBottom component="h2" variant="display1">
+                                            Project Description
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container>
+                                    <Grid
+                                        item
+                                        xs={10}
+                                        style={{marginTop: 20, marginRight: 20, marginLeft: 70}}
+                                    >
+                                        <Typography gutterBottom variant="subtitle1">
+                                            {this.props.data.description}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container>
+                                    <Grid xs={4} sm={4}>
+                                        <TextField
+                                            id="outlined-read-only-input"
+                                            label="Budget"
+                                            defaultValue={this.props.data.budget}
+                                            className={classes.textField}
+                                            margin="normal"
+                                            InputProps={{
+                                                readOnly: true
+                                            }}
+                                            variant="outlined"
+                                            style={{marginTop: 70, marginRight: 20, marginLeft: 70}}
+                                        />
+                                    </Grid>
+
+                                    <Grid xs={6} sm={6}>
+                                        <TextField
+                                            id="outlined-read-only-input"
+                                            label="Location"
+                                            defaultValue={this.props.data.city}
+                                            className={classes.textField}
+                                            margin="normal"
+                                            InputProps={{
+                                                readOnly: true
+                                            }}
+                                            variant="outlined"
+                                            style={{marginTop: 70, marginLeft: 70}}
+                                        />
+                                    </Grid>
+                                </Grid>
+
+
+                            </Paper>
+
+
+
+
+
+
+                        </Grid>
+
+
+
+
+
+
+
+
+
+
 
                         {/* this is the code for card */}
                     </Dialog>
@@ -337,18 +402,42 @@ class PostedProject extends React.Component {
                                     <Grid item xs container direction="column" spacing={16}>
                                         <Grid item xs>
                                             <br/>
-                                            <Typography gutterBottom variant="subtitle1">
+                                            <Typography gutterBottom component="h2" variant="display1">
                                                 {this.props.data.projectName}
                                             </Typography>
-                                            <Typography gutterBottom>
-                                                Category : {this.props.data.category}
-                                            </Typography>
-                                            <Typography gutterBottom>
-                                                Posted on  : {(moment(this.props.data.createdAt).format("L LTS")).substring(0, 10)}
-                                            </Typography>
-                                            <Typography color="textSecondary">
-                                                Location : {this.props.data.city}
-                                            </Typography>
+                                            <Grid container>
+                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                    category
+                                                </i>
+
+                                                <Typography gutterBottom style={{marginTop: 3, marginLeft: 3}}>
+                                                    {this.props.data.category}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid container style={{marginTop: 8}}>
+                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                    calendar_today
+                                                </i>
+
+                                                <Typography gutterBottom style={{marginTop: 3, marginLeft: 3}}>
+                                                    {(moment(this.props.data.createdAt).format("L LTS")).substring(0, 10)}
+                                                </Typography>
+
+                                            </Grid>
+
+                                            <Grid container style={{marginTop: 8}}>
+                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                    pin_drop
+                                                </i>
+
+                                                <Typography color="textSecondary" style={{marginTop: 3, marginLeft: 3}}>
+                                                    {this.props.data.city}
+                                                </Typography>
+
+                                            </Grid>
+
+
                                         </Grid>
                                         <Grid container justify="center">
                                             <Grid xs={5}>
@@ -356,7 +445,7 @@ class PostedProject extends React.Component {
                                                     variant="outlined"
                                                     color="primary"
                                                     onClick={this.handleClickOpen.bind(this, this.props.data._id)}
-                                                    // onClick={this.handleClickOpen}
+                                                    style={{ color: '#FF5722'}}
                                                 >
                                                     VIEW MORE
                                                 </Button>
@@ -364,12 +453,20 @@ class PostedProject extends React.Component {
                                         </Grid>
                                     </Grid>
                                     <Grid item>
+
+                                        <div style={{marginLeft: 4}}>
+                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                attach_money
+                                            </i>
+                                        </div>
                                         <Typography variant="subtitle1">{this.props.data.budget}</Typography>
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Paper>
                     </div>
+                    <br/>
+                    <br/>
                 </div>
                 {/* this dialogue box is for writing proposal */}
 

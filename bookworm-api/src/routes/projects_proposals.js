@@ -109,19 +109,33 @@ router.get("/findF/:user_id",(req,res,next) => { //{email:'shahreyar166@gmail.co
         })
         .catch(err => console.log('err'));
 
-
-
-
 });
 
 
+//this method is to get all the projects that are completed
 
 
 
+router.get("/completed/:user_id",(req,res,next) => {
 
 
+    const user_id=req.params.user_id;
 
 
+    PostProject.find ({
+        $and : [
+            {email:user_id},
+            {finalSubmit:true}
+        ]
+    }, {photographer_id: 0})
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc)
+        })
+        .catch(err => console.log('err'));
+
+});
 
 
 export default router;

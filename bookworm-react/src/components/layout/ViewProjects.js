@@ -106,49 +106,6 @@ class ControlledExpansionPanels extends React.Component {
 
     }
 
-    //
-    // setDate=(date)=>{
-    //     this.setState({date:date});
-    //     console.log(this.state.date);
-    // };
-    //
-    // setTime=(time)=>{
-    //     this.setState({time:time});
-    //     console.log(this.state.time);
-    // };
-    //
-    //
-    //
-    // handleClickOpenDialogue = (id) => {
-    //     this.setState({openDialogue: true});
-    //
-    //
-    //     // console.log(this.state.data.filter(object => object._id.includes(id)));
-    //
-    //
-    //     this.state.data.filter(object => object._id.includes(id)).map((data, index) => {
-    //         this.setState({proposal: data.proposal});
-    //         this.setState({budget: data.budget});
-    //         this.setState({photographer_id: data.pUser_id});
-    //         this.setState({project_id: data.project_id});
-    //
-    //         console.log(this.state.photographer_id);
-    //         return 0;
-    //     })
-    //
-    //
-    // };
-    //
-    // handleCloseDialogue = () => {
-    //     this.setState({openDialogue: false});
-    // };
-    //
-    // handleChange = panel => (event, expanded) => {
-    //     this.setState({
-    //         expanded: expanded ? panel : false
-    //     });
-    // };
-    //
     handleClickOpen = (id) => {
         this.setState({open: true});
         const pUser_id = localStorage.email;
@@ -252,29 +209,72 @@ class ControlledExpansionPanels extends React.Component {
                 <br/>
                 <br/>
                 <div className={classes.root}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} >
                         <Grid container spacing={16}>
                             <Grid item xs={12} sm container>
                                 <Grid item xs container direction="column" spacing={16}>
                                     <Grid item xs className={classes.margin}>
 
-                                        <Typography gutterBottom variant="subheading">
-
-                                            {this.props.data.projectName.substring(0, 200)}
-
-                                        </Typography>
+                                        <Grid container>
 
 
+                                            <Typography gutterBottom  variant="button" style={{ marginTop: 2, marginRight: 8   }}>
+                                                Project Title :
+                                            </Typography>
 
-                                        <Typography gutterBottom variant="overline">
 
-                                            {this.props.data.description.substring(0, 300)}
 
-                                        </Typography>
+                                            <Typography gutterBottom variant="subheading">
 
-                                        <Typography  variant="caption" gutterBottom style={{marginTop: 10}}> Location: {this.props.data.city}</Typography>
+                                                {this.props.data.projectName.substring(0, 200)}
 
-                                        <Typography   variant="caption" gutterBottom> Event Date: {this.props.data.date}</Typography>
+                                            </Typography>
+
+
+                                        </Grid>
+
+
+
+                                        <Grid container>
+
+
+
+                                            <Typography gutterBottom  variant="button" style={{ marginTop: 4, marginRight: 8   }}>
+                                                Project Description :
+                                            </Typography>
+
+
+                                            <Typography gutterBottom variant="overline">
+
+                                                {this.props.data.description.substring(0, 300)}
+
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                        <Grid container>
+                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                pin_drop
+                                            </i>
+
+                                            <Typography  variant="caption" gutterBottom style={{marginTop: 10, marginLeft: 6}}> {this.props.data.city}</Typography>
+
+                                        </Grid>
+
+                                        <Grid container>
+                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                calendar_today
+
+                                            </i>
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}> Event Date: {this.props.data.date}</Typography>
+
+                                        </Grid>
+
+
+
+
 
                                     </Grid>
 

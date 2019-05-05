@@ -18,6 +18,8 @@ import PhotographerOnGoingProjects from './components/pages/photographerOnGoingP
 import PincompleteProjects from './components/pages/pIncompleteProjects';
 import PhotographerProfile from './components/pages/ViewPhotographerProfile'; //this is for client to view photographer's profile
 import ClientProfile from './components/pages/ClientProfile'; //this is for client to view and edit its own profile
+import CompletedProjects from './components/pages/CompletedProjects';
+
 const App = ({location}) => (
     <div>
         <Route location={location} path="/" exact component={HomePage}/>
@@ -50,6 +52,8 @@ const App = ({location}) => (
         <UserRoute location={location} path="/pIncompleteProjects" exact component={PincompleteProjects}/>
         <UserRoute location={location} path="/photographerProfile" exact component={PhotographerProfile}/>
         <UserRoute location={location} path="/myProfile" exact component={ClientProfile}/>
+        <UserRoute location={location} path="/CompletedProjects" exact component={CompletedProjects}/>
+
 
 
 

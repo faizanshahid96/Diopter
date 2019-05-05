@@ -36,6 +36,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ImageGallery from './ImageGallery';
+import Rating from "material-ui-rating";
 
 
 
@@ -96,6 +97,7 @@ class RecipeReviewCard extends React.Component {
     state = {
         expanded: false,
 
+
     };
 
 
@@ -119,7 +121,9 @@ class RecipeReviewCard extends React.Component {
                 "http://localhost:8080/choose.png",
                 "http://localhost:8080/choose.png"
             ],
-            gallery1: []
+            gallery1: [],
+            star: 0
+
         };
 
 
@@ -140,6 +144,25 @@ class RecipeReviewCard extends React.Component {
                 this.setState({expert: res.data[0].expert});
                 this.setState({pictureLink: res.data[0].profilePicture});
                 this.setState({gallery1: res.data[0].gallery});
+                this.setState({rating: res.data[0].rating});
+
+                const sum =  res.data[0].rating.reduce(function(a, b) { return a + b; }, 0);
+                const lenght = res.data[0].rating.length;
+
+                console.log(sum);
+                console.log(lenght);
+
+                const average = Math.ceil(sum/lenght);
+
+
+                console.log(average);
+
+                this.setState({star : average});
+
+                localStorage.rating = average;
+
+
+
 
 
 
@@ -303,9 +326,13 @@ class RecipeReviewCard extends React.Component {
                                 <br/>
 
                                 <Grid container justify = "center">
-                                    <FavoriteIcon/>
-                                    <FavoriteIcon/>
-                                    <FavoriteIcon/>
+
+                                    <Rating
+                                        value={localStorage.rating}
+                                        max={5}
+                                        onChange={(value) => this.setState({star:value})}
+                                        readOnly
+                                    />
 
                                 </Grid>
                                 <br/>

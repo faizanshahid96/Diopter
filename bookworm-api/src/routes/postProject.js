@@ -51,7 +51,9 @@ router.post("/", (req, res) => {
         budget: req.body.budget,
         email: req.body.email,
         state: false,
-        date:req.body.date
+        date:req.body.date,
+        finalSubmit: false,
+        rating : false
     });
 
 
@@ -154,7 +156,6 @@ router.get("/getProject/:id",(req,res,next) => { //{email:'shahreyar166@gmail.co
     })
         .exec()
         .then(doc => {
-            // console.log(doc);
             res.status(200).json(doc)
         })
         .catch(err => console.log('err'));
@@ -225,6 +226,16 @@ router.get("/getSubmission/:id",(req,res,next) => {
             .catch(err => console.log(err));
 
 });
+
+
+
+//this method is to get all the projects that are completed
+
+
+
+
+
+
 
 
 

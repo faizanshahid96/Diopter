@@ -23,8 +23,9 @@ class OnGoingProjects extends Component {
 
     receiveData = () => {
 
-        const route = '/api/postProject/getProject'+ localStorage.email;
-        console.log('hello');
+        const route = '/api/postProject/getProject/'+ localStorage.email;
+
+        console.log(localStorage.email);
 
         axios.get(route)
             .then(res => {
@@ -85,6 +86,8 @@ class OnGoingProjects extends Component {
                         <ViewProjects data={data} key={"PP" + index} receiveData={this.receiveData.bind(this)}/>
                     )
                 }
+
+
             </Fragment>
 
         );
