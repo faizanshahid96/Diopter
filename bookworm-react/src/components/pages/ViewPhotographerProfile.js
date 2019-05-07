@@ -36,6 +36,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Rating from "material-ui-rating";
 // import ImageGallery from './ImageGallery';
 
 
@@ -144,7 +145,23 @@ class ViewPhotographerProfile extends React.Component {
                 this.setState({expert: res.data[0].expert});
                 this.setState({pictureLink: res.data[0].profilePicture});
 
-                const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
+
+                const sum =  res.data[0].rating.reduce(function(a, b) { return a + b; }, 0);
+                const lenght = res.data[0].rating.length;
+
+                console.log(sum);
+                console.log(lenght);
+
+                const average = Math.ceil(sum/lenght);
+
+
+                console.log(average);
+
+                this.setState({star : average});
+
+                localStorage.rating = average;
+
+                const opp = "http://localhost:8000/"+this.state.pictureLink.substring(7, 100);
                 this.setState({pictureLink:opp});
 
                 // console.log(res.data[0].name);
@@ -216,9 +233,12 @@ class ViewPhotographerProfile extends React.Component {
                                 <br/>
 
                                 <Grid container justify = "center">
-                                    <FavoriteIcon/>
-                                    <FavoriteIcon/>
-                                    <FavoriteIcon/>
+                                    <Rating
+                                        value={localStorage.rating}
+                                        max={5}
+                                        onChange={(value) => this.setState({star:value})}
+                                        readOnly
+                                    />
 
                                 </Grid>
                                 <br/>

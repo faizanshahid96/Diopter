@@ -104,7 +104,7 @@ class RecipeReviewCard extends React.Component {
         this.state = {data: [],
             open: false,
             name: '',
-            description: 'I am a wedding photographer and my work is to take pictures of everyone presen on the event with little spice of my creativity'
+            description: ''
             , selectedFile: null
             ,labelWidth: 0,
             city:'',
@@ -140,7 +140,7 @@ class RecipeReviewCard extends React.Component {
                 this.setState({city: res.data[0].location});
                 this.setState({pictureLink: res.data[0].profilePicture});
 
-                const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
+                const opp = "http://localhost:8000/"+this.state.pictureLink.substring(7, 100);
 
                 this.setState({pictureLink:opp});
 

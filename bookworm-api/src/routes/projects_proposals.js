@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
     //this is the code to set the state of project to true
     PostProject.updateOne(
         { _id: project_id },
-        { $set: { state: true, date: req.body.date, time: req.body.time } }
+        { $set: { state: true, date: req.body.date, time: req.body.time, SubmissionDate : req.body.submissionDate } }
     ).exec()
         .then(doc => {
             console.log(doc);
@@ -93,13 +93,9 @@ router.get("/findF/:user_id",(req,res,next) => { //{email:'shahreyar166@gmail.co
 
     // this code will get all those projects that are on going for the currently logged in user
 
-    // console.log("user_id");
-    // ({final_Photographer  : user_id})
-
     PostProject.find({
         $and : [
             {final_Photographer:user_id},
-            {submit :false}
         ]
     })
         .exec()

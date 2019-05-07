@@ -109,7 +109,7 @@ class PostedProject extends React.Component {
 
 
 
-                const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
+                const opp = "http://localhost:8000/"+this.state.pictureLink.substring(7, 100);
 
                 this.setState({pictureLink:opp});
 
@@ -163,7 +163,7 @@ class PostedProject extends React.Component {
 
     sendData = () => {
 
-        if(this.state.proposal === undefined || this.state.budget === undefined){
+        if(this.state.proposal === undefined || this.state.budget === undefined || this.state.budget < 0 ){
             this.setState({error : true});
 
         }else if(this.state.proposal === '' || this.state.budget === ""){
@@ -217,7 +217,7 @@ class PostedProject extends React.Component {
                         onClose={this.handleClose}
                         TransitionComponent={Transition}
                     >
-                        <AppBar className={classes.appBar}>
+                        <AppBar className={classes.appBar}  style={{ background: '#E91E63' }}>
                             <Toolbar>
 
                                 <Typography
@@ -364,6 +364,8 @@ class PostedProject extends React.Component {
 
                             </Paper>
 
+                            <br/>
+
 
 
 
@@ -406,7 +408,7 @@ class PostedProject extends React.Component {
                                                 {this.props.data.projectName}
                                             </Typography>
                                             <Grid container>
-                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                <i className="material-icons" style={{ color: '#E91E63' }}>
                                                     category
                                                 </i>
 
@@ -416,7 +418,7 @@ class PostedProject extends React.Component {
                                             </Grid>
 
                                             <Grid container style={{marginTop: 8}}>
-                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                <i className="material-icons" style={{ color: '#E91E63' }}>
                                                     calendar_today
                                                 </i>
 
@@ -427,7 +429,7 @@ class PostedProject extends React.Component {
                                             </Grid>
 
                                             <Grid container style={{marginTop: 8}}>
-                                                <i className="material-icons" style={{ color: '#FF5722' }}>
+                                                <i className="material-icons" style={{ color: '#E91E63' }}>
                                                     pin_drop
                                                 </i>
 
@@ -441,21 +443,30 @@ class PostedProject extends React.Component {
                                         </Grid>
                                         <Grid container justify="center">
                                             <Grid xs={5}>
+
                                                 <Button
-                                                    variant="outlined"
+                                                    variant="contained"
                                                     color="primary"
                                                     onClick={this.handleClickOpen.bind(this, this.props.data._id)}
-                                                    style={{ color: '#FF5722'}}
+                                                    style={{ color: '#FFFFFF' , backgroundColor : '#FF5722'}}
                                                 >
-                                                    VIEW MORE
+                                                    View More
                                                 </Button>
+                                                {/*<Button*/}
+                                                {/*    variant="outlined"*/}
+                                                {/*    color="primary"*/}
+                                                {/*    onClick={this.handleClickOpen.bind(this, this.props.data._id)}*/}
+                                                {/*    style={{ color: '#FF5722'}}*/}
+                                                {/*>*/}
+                                                {/*    VIEW MORE*/}
+                                                {/*</Button>*/}
                                             </Grid>
                                         </Grid>
                                     </Grid>
                                     <Grid item>
 
                                         <div style={{marginLeft: 4}}>
-                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                            <i className="material-icons" style={{ color: '#E91E63' }}>
                                                 attach_money
                                             </i>
                                         </div>
@@ -485,7 +496,7 @@ class PostedProject extends React.Component {
                             <Grid item xs={12}>
                                 {this.state.error && (
                                     <Message negative>
-                                        <Message.Header>Empty Fields are not allowed</Message.Header>
+                                        <Message.Header>Please fill the fields carefully</Message.Header>
 
                                     </Message>
                                 )}
@@ -496,6 +507,7 @@ class PostedProject extends React.Component {
                         <Grid container>
                             <Grid xs={12}>
                                 <TextField
+                                    error
                                     id="outlined-multiline-static"
                                     label="max 500 words"
                                     multiline
@@ -514,8 +526,9 @@ class PostedProject extends React.Component {
                         <Grid container>
                             <Grid item xs={5}>
                                 <TextField
+                                    error
                                     id="outlined-number"
-                                    label="Number"
+                                    label="Budget"
                                     name="proposal"
                                     value={this.state.budget}
                                     onChange={this.handleChanger("budget")}
@@ -529,10 +542,10 @@ class PostedProject extends React.Component {
                         </Grid>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleCloseDialogue} color="primary">
+                        <Button onClick={this.handleCloseDialogue} color="primary" >
                             Cancel
                         </Button>
-                        <Button onClick={this.sendData} color="primary">
+                        <Button onClick={this.sendData} color="primary" style={{color : "#FF5722"}}>
                             Send
                         </Button>
                     </DialogActions>

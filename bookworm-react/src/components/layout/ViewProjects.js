@@ -254,7 +254,7 @@ class ControlledExpansionPanels extends React.Component {
 
 
                                         <Grid container>
-                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                            <i className="material-icons" style={{ color: '#E91E63' }}>
                                                 pin_drop
                                             </i>
 
@@ -263,7 +263,7 @@ class ControlledExpansionPanels extends React.Component {
                                         </Grid>
 
                                         <Grid container>
-                                            <i className="material-icons" style={{ color: '#FF5722' }}>
+                                            <i className="material-icons" style={{ color: '#E91E63' }}>
                                                 calendar_today
 
                                             </i>

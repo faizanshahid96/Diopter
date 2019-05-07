@@ -170,7 +170,7 @@ class SignupForm extends Component {
                                         </Form.Field>
 
                                         <Form.Field>
-                                            <label htmlFor="password">Password</label>
+                                            <label htmlFor="password">Confirm Password</label>
                                             <input
                                                 type="password"
                                                 name="confirm"

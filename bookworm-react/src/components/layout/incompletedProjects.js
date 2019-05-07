@@ -26,6 +26,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import {Link} from "react-router-dom";
+var moment = require('moment');
 
 
 
@@ -111,7 +112,6 @@ class IncompleteProjects extends React.Component {
 
 
             });
-
 
 
 
@@ -250,7 +250,47 @@ class IncompleteProjects extends React.Component {
                                             {/*I am looking for an event photographer for a conference in*/}
                                             {/*Lahore*/}
                                         </Typography>
-                                        <Typography gutterBottom>21 days left</Typography>
+                                        <Grid container>
+
+
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Date: </span>
+                                                {this.props.data.date}
+                                            </Typography>
+
+                                        </Grid>
+
+                                        <Grid container>
+
+
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}> Time: </span>
+                                                {this.props.data.time}
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                        <Grid container>
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Location: </span>
+                                                {this.props.data.city}
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                        <Grid container>
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Submision data: </span>
+                                                {this.props.data.SubmissionDate}
+                                            </Typography>
+
+                                        </Grid>
                                     </Grid>
                                 </Grid>
 

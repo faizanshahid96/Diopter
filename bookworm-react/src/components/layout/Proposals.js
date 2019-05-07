@@ -116,6 +116,11 @@ class ControlledExpansionPanels extends React.Component {
         console.log(this.state.time);
     };
 
+    setSub=(date)=>{
+        this.setState({sub:date});
+        console.log(this.state.sub);
+    };
+
 
 
     handleClickOpenDialogue = (id) => {
@@ -194,7 +199,8 @@ class ControlledExpansionPanels extends React.Component {
             client_id: localStorage.email,
             photographer_id: this.state.photographer_id,
             date: this.state.date,
-            time: this.state.time
+            time: this.state.time,
+            submissionDate : this.state.sub
         }).then()
             .catch(error => console.log(error));
 
@@ -210,8 +216,8 @@ class ControlledExpansionPanels extends React.Component {
 
 
 
-        this.setState({openDialogue: false});
-        this.setState({open: false});
+        // this.setState({openDialogue: false});
+        // this.setState({open: false});
 
     };
 
@@ -272,7 +278,7 @@ class ControlledExpansionPanels extends React.Component {
                         onClose={this.handleClose}
                         TransitionComponent={Transition}
                     >
-                        <AppBar className={classes.appBar}>
+                        <AppBar className={classes.appBar} style={{ background: '#E91E63' }}>
                             <Toolbar>
 
 
@@ -294,7 +300,7 @@ class ControlledExpansionPanels extends React.Component {
 
                                         <ListItem>
                                             <ListItemAvatar>
-                                                <Avatar>
+                                                <Avatar style={{color:'#FF5722'}}>
                                                     <FolderIcon/>
                                                 </Avatar>
                                             </ListItemAvatar>
@@ -311,7 +317,7 @@ class ControlledExpansionPanels extends React.Component {
 
                                                     onClick={this.handleClickOpenDialogue.bind(this, data._id)}
                                                 >
-                                                    <i className="material-icons">
+                                                    <i className="material-icons" style={{color: '#FF5722'}}>
                                                         remove_red_eye
                                                     </i>
                                                 </IconButton>
@@ -376,18 +382,20 @@ class ControlledExpansionPanels extends React.Component {
 
                         </DialogContent>
                         <DialogActions>
-                           <Button onClick={this.handleCloseDialogue} color="primary">
+                           <Button onClick={this.handleCloseDialogue} color="primary" style={{color:'#FF5722'}}>
                                 Cancel
                             </Button>
-                           <Link to='/photographerProfile'> <Button
+                           <Link to='/photographerProfile' > <Button
                                 color="primary"
+                                style={{color:'#FF5722'}}
 
                             >
                                 View Profile
                             </Button>
                            </Link>
-                            <Button onClick={this.startProject} color="primary">
+                            <Button onClick={this.startProject} color="primary" style={{color:'#FF5722'}}>
                                 Start Project
+
                             </Button>
                         </DialogActions>
                     </Dialog>
@@ -409,7 +417,7 @@ class ControlledExpansionPanels extends React.Component {
                             </DialogContentText>
                             <Grid container>
                                 <Grid xs={12}>
-                                    <DatePicker fun={this.setDate.bind(this)} />
+                                    <DatePicker fun={this.setDate.bind(this)} data={'Event Date'} />
                                 </Grid>
                             </Grid>
 
@@ -420,6 +428,15 @@ class ControlledExpansionPanels extends React.Component {
 
                                 </Grid>
                             </Grid>
+
+                            <br/>
+
+                            <Grid container>
+                                <Grid xs={12}>
+                                    <DatePicker setSub={this.setSub.bind(this)} data={'Submission Date'}/>
+                                </Grid>
+                            </Grid>
+
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={this.closeInfoDialogue} color="primary">

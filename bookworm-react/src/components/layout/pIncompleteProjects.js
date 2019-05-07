@@ -4,31 +4,14 @@ import {withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
 import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
-import FolderIcon from "@material-ui/icons/Folder";
-import DeleteIcon from "@material-ui/icons/Delete";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import Snackbar from './Snackbar';
 
 
@@ -95,7 +78,7 @@ class IncompleteProjects extends React.Component {
         project_id: '',
         photographer_id: '',
         client_id: '',
-        check:false
+        check:false,
 
 
     };
@@ -104,7 +87,9 @@ class IncompleteProjects extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {data: [], message:'Only zip files are allowed',        pic: true,
+        this.state = {data: [], message:'Only zip files are allowed',
+            pic: true,
+            submit : this.props.data.submit
         };
 
     }
@@ -132,7 +117,10 @@ class IncompleteProjects extends React.Component {
 
 
         this.upload();
+
         this.props.receiveData();
+
+        this.setState({submit : true});
 
         this.setState({open: false});
         this.setState({pic:true})
@@ -236,23 +224,73 @@ class IncompleteProjects extends React.Component {
                                         <Typography gutterBottom variant="subheading">
 
                                             {this.props.data.projectName}
-                                            {/*I am looking for an event photographer for a conference in*/}
-                                            {/*Lahore*/}
+
                                         </Typography>
-                                        <Typography variant="caption" gutterBottom>21 days left</Typography>
+                                        <Grid container>
+
+
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Date: </span>
+                                                {this.props.data.date}
+                                            </Typography>
+
+                                        </Grid>
+
+                                        <Grid container>
+
+
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}> Time: </span>
+                                                {this.props.data.time}
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                        <Grid container>
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Location: </span>
+                                                {this.props.data.city}
+                                            </Typography>
+
+                                        </Grid>
+
+
+                                        <Grid container>
+
+                                            <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                                <span style={{color : "#E91E63"}}>Submision date: </span>
+                                                {this.props.data.SubmissionDate}
+                                            </Typography>
+
+                                        </Grid>
                                     </Grid>
                                 </Grid>
-                                <Grid item>
 
-                                    <div
-                                        className="ui basic green button"
-                                        // onClick={this.handleClickOpen}
-                                        id={this.props.data._id}
-                                        onClick={this.handleClickOpen.bind(this, this.props.data._id)}
+                                {this.state.submit ? (
 
-                                    >Submit</div>
+                                    <Typography   variant="caption" gutterBottom style={{ marginLeft: 6, marginTop: 5}}>
+                                      Project Submited
+                                    </Typography>
+                                ) : (
 
-                                </Grid>
+                                    <Grid item>
+
+                                        <Button
+                                            id={this.props.data._id}
+                                            onClick={this.handleClickOpen.bind(this, this.props.data._id)}
+                                            variant="contained"
+                                            color="primary"
+                                            style={{ color: '#FFFFFF' , backgroundColor : '#E91E63'}}
+
+                                        >Submit</Button>
+
+                                    </Grid>
+                                )}
+
                             </Grid>
                         </Grid>
                     </Paper>

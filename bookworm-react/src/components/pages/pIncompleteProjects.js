@@ -1,23 +1,9 @@
 import React, {Component, Fragment} from "react";
-import PropTypes, {array} from "prop-types";
-import {connect} from "react-redux";
-import {login} from "../../actions/auth";
 import axios from "axios";
-import LoginForm from "../forms/LoginForm";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
-import PostProject from "../layout/PostProject";
-import PostedProject from "../layout/PostedProject";
-// import OnGoingProjects from "../layout/OnGoingProjects";
-import Proposals from "../layout/Proposals";
-import Practice from "../layout/Practice";
 import IncompleteProjects from "../layout/pIncompleteProjects"
 import AppBar from "../layout/PhotographerAppBar"
-import Drawer from "../layout/Profile_Drawer"
-import Profile from "../layout/ProfilePicture"
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import {Link} from "react-router-dom";
 
 
 
@@ -51,10 +37,9 @@ class pIncompleteProjects extends Component {
 
         axios.get(`/api/projects_proposals/findF/` + user_id)
             .then(res => {
-
-
-                console.log(res.data);
                 this.setState({data: res.data});
+                console.log(res.data);
+
             });
 
     };

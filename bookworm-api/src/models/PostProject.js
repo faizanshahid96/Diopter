@@ -65,6 +65,9 @@ const schema = new mongoose.Schema(
             type: Boolean,
             required : false
         },
+        SubmissionDate:{
+            type: String
+        },
 
 
 

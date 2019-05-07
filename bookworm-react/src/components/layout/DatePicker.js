@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import {Link} from "react-router-dom";
 
 const styles = theme => ({
     container: {
@@ -28,17 +29,27 @@ class DatePickers extends React.Component {
 
     };
 
+    saveSub=(event)=>{
+
+        this.setState({[event.target.name]: event.target.value},() => {
+            this.props.setSub(this.state.date);
+        });
+
+    };
+
+
+
     render() {
+
         const {classes} = this.props;
 
+        let form;
+        if (this.props.data === "Event Date"){
 
-        return (
-            <form className={classes.container} noValidate>
+            form =
                 <TextField
-                    style={{  color : "#ffffff" }}
-                    error
                     id="date"
-                    label="Event Date"
+                    label={this.props.data}
                     name='date'
                     type="date"
                     defaultValue="2017-05-24"
@@ -48,7 +59,34 @@ class DatePickers extends React.Component {
                         shrink: true,
                     }}
                 />
+        }
+        else{
+            form=
+                    <TextField
+                        id="date"
+                        label={this.props.data}
+                        name='date'
+                        type="date"
+                        defaultValue="2017-05-24"
+                        onChange={this.saveSub}
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+
+        }
+
+        return (
+
+
+            <form className={classes.container} noValidate>
+
+            {form}
+
             </form>
+
+
         );
     }
 }

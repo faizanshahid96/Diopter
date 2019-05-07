@@ -138,7 +138,7 @@ class PostProject extends React.Component {
 
 
         if (this.state.projectName === undefined  || this.state.city === undefined || this.state.category === undefined || this.state.description === undefined || this.state.budget === undefined
-            || this.state.date === undefined){
+            || this.state.date === undefined || this.state.budget < 0){
             this.setState({error : true});
         }
         else if(this.state.projectName === ''  || this.state.city === ''  || this.state.description === "" || this.state.budget === ""
@@ -237,10 +237,11 @@ class PostProject extends React.Component {
                                         <TextField
                                             error
                                             id="outlined-textarea"
-                                            label="Description"
-                                            placeholder="just give a brief description"
+                                            label="Title"
+                                            placeholder="what are you looking for?"
                                             multiline
                                             fullWidth
+                                            inputProps={{maxLength: 100}}
                                             margin="normal"
                                             variant="outlined"
                                             style={{marginLeft: 75}}
@@ -318,6 +319,7 @@ class PostProject extends React.Component {
                                             className={classes.textField}
                                             margin="normal"
                                             variant="outlined"
+                                            inputProps={{maxLength: 500}}
                                             fullWidth
                                             style={{marginLeft: 75}}
                                             name="description"
@@ -403,7 +405,7 @@ class PostProject extends React.Component {
 
                                         <Grid container>
                                             <Grid item xs={4} style={{marginLeft: 70, marginTop: 35}}>
-                                                <DatePicker  fun={this.setDate.bind(this)}/>
+                                                <DatePicker  fun={this.setDate.bind(this)} data={'Event Date'}/>
                                             </Grid>
 
                                         </Grid>

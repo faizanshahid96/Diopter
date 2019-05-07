@@ -166,7 +166,7 @@ class RecipeReviewCard extends React.Component {
 
 
 
-                const opp = "http://localhost:8080/"+this.state.pictureLink.substring(7, 100);
+                const opp = "http://localhost:8000/"+this.state.pictureLink.substring(7, 100);
 
                 this.setState({pictureLink:opp});
 
@@ -388,7 +388,7 @@ class RecipeReviewCard extends React.Component {
 
                                 <div className="image-upload">
                                     <label htmlFor="file-input">
-                                        <img  alt='lol' src="http://localhost:8080/photo-camera.png" width='200' height='200'/>
+                                        <img  alt='lol' src="http://localhost:8000/photo-camera.png" width='200' height='200'/>
                                     </label>
 
                                     <input id="file-input"  onChange={this.fileSelectedHandler} type="file" style={{display: 'none'}}/>
